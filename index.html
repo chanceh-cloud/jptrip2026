@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -44,7 +44,7 @@
             justify-content: center;
             min-height: 100vh;
             overflow: hidden; /* Lock viewport for app feel */
-            font-size: 16px; /* Base font size scaled up */
+            font-size: 20px; /* Base font size scaled up (Level 3) */
         }
 
         /* Mobile App Container */
@@ -64,7 +64,7 @@
         .app-header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-crimson) 100%);
             color: white;
-            padding: 12px 16px 10px; /* Compact padding */
+            padding: 6px 12px 4px; /* Compact padding (50% reduction) */
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             flex-shrink: 0; /* Header stays fixed at top */
@@ -75,11 +75,11 @@
         .header-top {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
         .header-logo {
-            font-size: 24px; /* Scaled up logo */
+            font-size: 18px; /* Compact logo */
             color: var(--accent-gold);
             animation: float 3s ease-in-out infinite;
         }
@@ -91,14 +91,14 @@
         }
 
         .header-title-box h1 {
-            font-size: 18px; /* Compact but larger title size */
+            font-size: 15px; /* Compact title size */
             font-weight: 700;
             margin: 0 0 2px 0;
             letter-spacing: 0.5px;
         }
 
         .header-title-box p {
-            font-size: 13px; /* Scaled up subtitle */
+            font-size: 11px; /* Compact subtitle */
             margin: 0;
             opacity: 0.85;
             display: flex;
@@ -107,7 +107,7 @@
 
         /* Horizontal Day Selector */
         .day-selector-wrapper {
-            margin-top: 8px; /* Compact margin */
+            margin-top: 4px; /* Compact margin */
             overflow-x: auto;
             scrollbar-width: none; /* Firefox */
         }
@@ -118,7 +118,7 @@
 
         .day-selector {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             padding: 2px 0;
         }
 
@@ -127,9 +127,9 @@
             background: rgba(255, 255, 255, 0.15);
             color: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 10px; /* Comfortably sized day buttons */
-            border-radius: 8px;
-            font-size: 13px;
+            padding: 3px 6px; /* Compact padding */
+            border-radius: 6px;
+            font-size: 11px; /* Compact day buttons */
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
@@ -145,7 +145,7 @@
 
         .day-btn span {
             display: block;
-            font-size: 9px;
+            font-size: 8px; /* Compact span text */
             opacity: 0.8;
             margin-top: 1px;
         }
@@ -165,7 +165,7 @@
             background: none;
             border: none;
             padding: 10px 0; /* Comfortable tab padding */
-            font-size: 14px; /* Larger tab font size */
+            font-size: 18px; /* Larger tab font size */
             font-weight: 500;
             color: var(--text-muted);
             cursor: pointer;
@@ -178,7 +178,7 @@
         }
 
         .tab-btn i {
-            font-size: 20px; /* Larger icons */
+            font-size: 24px; /* Larger icons */
         }
 
         .tab-btn.active {
@@ -221,7 +221,7 @@
         }
 
         .card-title {
-            font-size: 18px; /* Larger card title */
+            font-size: 22px; /* Larger card title */
             font-weight: 700;
             margin: 0 0 12px 0;
             display: flex;
@@ -272,17 +272,17 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
             color: var(--primary-crimson);
-            font-size: 16px; /* Larger time font */
+            font-size: 19px; /* Larger time font */
             margin-bottom: 4px;
         }
 
         .timeline-body {
-            font-size: 17px; /* Larger body font size */
+            font-size: 20px; /* Larger body font size */
             line-height: 1.6;
         }
 
         .timeline-event-title {
-            font-size: 18px; /* Larger event title */
+            font-size: 22px; /* Larger event title */
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 4px;
@@ -293,13 +293,13 @@
 
         .timeline-event-desc {
             color: var(--text-muted);
-            font-size: 16px; /* Larger event description */
+            font-size: 19px; /* Larger event description */
             white-space: pre-line;
         }
 
         /* Restaurant Cards */
         .food-section-title {
-            font-size: 16px; /* Larger food section title */
+            font-size: 19px; /* Larger food section title */
             font-weight: 700;
             color: var(--primary-crimson);
             text-transform: uppercase;
@@ -328,7 +328,7 @@
         .food-badge {
             background-color: var(--text-muted);
             color: white;
-            font-size: 13px; /* Larger badge font */
+            font-size: 16px; /* Larger badge font */
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 700;
@@ -342,7 +342,7 @@
         }
 
         .food-name {
-            font-size: 18px; /* Larger restaurant name */
+            font-size: 22px; /* Larger restaurant name */
             font-weight: 700;
             color: var(--text-main);
             margin: 0 0 6px 0;
@@ -351,7 +351,7 @@
         }
 
         .food-details {
-            font-size: 16px; /* Larger restaurant details */
+            font-size: 19px; /* Larger restaurant details */
             color: var(--text-muted);
             line-height: 1.5;
             white-space: pre-line;
@@ -359,7 +359,7 @@
 
         /* Transit & Pass details styling */
         .transit-desc {
-            font-size: 16.5px; /* Larger transit description */
+            font-size: 20px; /* Larger transit description */
             line-height: 1.6;
             color: var(--text-main);
             white-space: pre-line;
@@ -368,7 +368,7 @@
         .pass-badge {
             background: linear-gradient(135deg, #023e8a 0%, #0077b6 100%); /* Ocean gradient badge */
             color: white;
-            font-size: 14px; /* Larger pass badge */
+            font-size: 17px; /* Larger pass badge */
             font-weight: 700;
             padding: 4px 8px;
             border-radius: 6px;
@@ -404,18 +404,18 @@
         .kurama-spot-number {
             background-color: var(--accent-gold);
             color: var(--primary-dark);
-            width: 26px;
-            height: 26px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 13px;
+            font-size: 16px;
         }
 
         .kurama-spot-title {
-            font-size: 18px; /* Larger spot title */
+            font-size: 22px; /* Larger spot title */
             font-weight: 700;
             flex-grow: 1;
             margin-left: 12px;
@@ -426,7 +426,7 @@
         }
 
         .kurama-spot-desc {
-            font-size: 16px; /* Larger spot description */
+            font-size: 19px; /* Larger spot description */
             line-height: 1.6;
             margin-bottom: 12px;
         }
@@ -439,7 +439,7 @@
 
         .kurama-spot-desc h4 {
             margin: 0 0 6px 0;
-            font-size: 15px; /* Larger section subheaders */
+            font-size: 18px; /* Larger section subheaders */
             color: var(--primary-crimson);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -478,7 +478,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 8px;
-            font-size: 15px; /* Larger table text */
+            font-size: 18px; /* Larger table text */
         }
 
         .savings-table th, .savings-table td {
@@ -557,7 +557,7 @@
                     <div class="card-title">
                         <i class="fa-solid fa-route"></i> 今日路線概述
                     </div>
-                    <div id="day-itinerary-summary" style="font-size: 16px; line-height: 1.5; color: var(--text-main);">
+                    <div id="day-itinerary-summary" style="font-size: 19px; line-height: 1.5; color: var(--text-main);">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
@@ -569,10 +569,10 @@
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="flex-grow: 1;">
-                            <div id="day-hotel-name" style="font-size: 18px; font-weight: 700; color: var(--text-main);"></div>
-                            <div id="day-hotel-address" style="font-size: 15px; color: var(--text-muted); margin-top: 4px;"></div>
+                            <div id="day-hotel-name" style="font-size: 22px; font-weight: 700; color: var(--text-main);"></div>
+                            <div id="day-hotel-address" style="font-size: 18px; color: var(--text-muted); margin-top: 4px;"></div>
                         </div>
-                        <a id="day-hotel-map" href="#" target="_blank" style="color: #E63946; font-size: 24px; padding: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                        <a id="day-hotel-map" href="#" target="_blank" style="color: #E63946; font-size: 28px; padding: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                             <i class="fa-solid fa-map-pin"></i>
                         </a>
                     </div>
@@ -610,8 +610,8 @@
             <!-- 4. Kurama Guide Tab -->
             <div id="panel-kurama" class="content-panel">
                 <div class="card" style="margin-bottom: 12px; background: linear-gradient(135deg, #1b3a24 0%, #2e5c38 100%); color: white; border: none;">
-                    <h3 style="margin: 0 0 6px 0; font-size: 18px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
-                    <p style="margin: 0; font-size: 15px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
+                    <h3 style="margin: 0 0 6px 0; font-size: 22px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
+                    <p style="margin: 0; font-size: 18px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
                 </div>
                 <div class="kurama-container" id="kurama-guide-container">
                     <!-- Loaded dynamically from JSON config -->
@@ -624,11 +624,11 @@
                     <div class="card-title">
                         <i class="fa-solid fa-ticket-simple"></i> 關西廣域鐵路周遊券 (5日 ￥12,000)
                     </div>
-                    <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;">
+                    <p style="font-size: 19px; line-height: 1.6; margin: 0 0 16px 0;">
                         本行程後半段（07/21 - 07/25）啟用 5 日關西廣域周遊券。以下為五人家庭旅遊的超划算省錢試算與乘車攻略。
                     </p>
                     
-                    <h4 style="font-size: 16px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
+                    <h4 style="font-size: 19px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
                     <table class="savings-table">
                         <thead>
                             <tr>
@@ -678,7 +678,7 @@
                         </tbody>
                     </table>
                     
-                    <div style="background-color: rgba(46, 125, 50, 0.05); border-left: 3px solid #2E7D32; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 15.5px; line-height: 1.5;">
+                    <div style="background-color: rgba(46, 125, 50, 0.05); border-left: 3px solid #2E7D32; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 18px; line-height: 1.5;">
                         <i class="fa-solid fa-calculator" style="color: #2E7D32; margin-right: 6px;"></i>
                         <strong>全家五人省錢總額：</strong><br>
                         單人省下 ￥6,300，全家五人省下總額高達 <strong>￥31,500</strong>！
@@ -689,7 +689,7 @@
                     <div class="card-title">
                         <i class="fa-solid fa-circle-info"></i> 周遊券乘車攻略
                     </div>
-                    <div style="font-size: 16px; line-height: 1.6; color: var(--text-main);">
+                    <div style="font-size: 19px; line-height: 1.6; color: var(--text-main);">
                         <strong>1. 啟用區間：</strong><br>
                         建議設定在 <strong>07/21 (二) ~ 07/25 (六)</strong>，完整覆蓋神戶、姬路、岡山、倉敷及前往關西機場的所有長途車程。<br><br>
                         <strong>2. 指定席預約：</strong><br>
@@ -701,28 +701,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Javascript Logic -->
-    <script>
-        // Full Itinerary Data in JSON structure��</strong><br>
-                        * <strong>京都 ➔ 神戶</strong>：請一定要坐 <strong>JR 新快速</strong> (直達約51分)，勿乘坐阪急電鐵 (Pass不適用，需額外付費)。<br>
-                        * <strong>新神戶 ➔ 岡山</strong>：可免費搭乘山陽新幹線所有車型 (含 Nozomi 希望號、Sakura 櫻花號) 的指定席或自由席。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sticky Bottom Bar -->
-        <a class="bottom-nav" id="bottom-hotel-bar" href="#" target="_blank">
-            <div class="bottom-hotel-info">
-                <span id="bottom-bar-label">今日住宿</span>
-                <div class="bottom-hotel-name" id="bottom-hotel-name-text">載入中...</div>
-            </div>
-            <div class="bottom-map-btn">
-                <i class="fa-solid fa-location-arrow"></i> 導航
-            </div>
-        </a>
     </div>
 
     <!-- Javascript Logic -->
@@ -1212,8 +1190,8 @@
             { id: 4, name: "由岐神社", img1: "Kurama_Photos/spot_4_1.jpg", img2: "Kurama_Photos/spot_4_2.JPG", history: "創建於西元940年。當時都城地震頻傳、平將門之亂爆發，朱雀天皇勅令將原本供奉於御所內的「由岐大明神」遷宮至鞍馬山，建立北方的守護屏障。這也是每年10月22日京都三大奇祭之一「鞍馬火祭」的發源地。", significance: "【特別提醒：若搭乘纜車將繞過此處】。神社以極具特色的「割拝殿」（中央有通道的拜殿，為國家重要文化財）以及樹齡高達800年、高聳入雲的巨型「御神木大杉」聞名，散發與自然和諧的原始力量。" },
             { id: 5, name: "鞍馬山纜車", img1: "Kurama_Photos/spot_5_1.jpg", img2: "Kurama_Photos/spot_5_2.jpg", history: "於1957年開通。這是日本唯一由宗教法人（鞍馬寺）直接營運的私營登山纜車，全長僅207公尺，也是全日本最短的收費鐵路。", significance: "興建的初衷是為了方便行動不便的參拜者上山。搭乘時支付的 ￥200 被視為對寺方的「寄付金」（捐獻），而非普通車資，是極為獨特的鐵道體驗。" },
             { id: 6, name: "多寶塔", img1: "Kurama_Photos/spot_6_1.JPG", img2: "Kurama_Photos/spot_6_2.JPG", history: "位於纜車終點站（多寶塔站）旁。這座多寶塔於1960年重建，象徵著大乘佛教經典中多寶如來現身說法的「寶塔湧現」宏偉意境。", significance: "被蔥鬱林木環繞的朱紅色多寶塔十分典雅，是從纜車出站後迎面而來的第一座莊嚴地標。在此可調整呼吸，開始走向本殿金堂。" },
-            { id: 7, name: "本殿金堂 & 金剛床", img1: "Kurama_Photos/spot_7_1.jpg", img2: "Kurama_Photos/spot_7_2.jpg", history: "鞍馬寺的主殿，供奉著三位一體的「尊天」神祇（代表月亮與慈悲的千手觀世音菩薩、代表太陽與光明的毘沙門天王、代表大地與生命力的護法魔王尊）。大殿正前方的石板地中央，嵌有象徵宇宙中心與能量交匯的三角形與星芒圖案——「金剛床」。", significance: "這是京都最強大的「能量景點（Power Spot）」。遊客通常會在本殿前的金剛床中心排隊，雙腳站在星芒中心，雙手合十向大山與天空祈禱，感受與宇宙能量連結的神秘體驗。" },
-            { id: 8, name: "靈寶殿", img1: "Kurama_Photos/spot_8_1.jpg", img2: "Kurama_Photos/spot_8_2.JPG", history: "位於本殿後方幽深的山林步道旁，是一座三層樓的鞍馬山專題博物館。館內一樓為自然科學展示室，二、三樓則為佛教文物與藝術珍藏室。", significance: "館內收藏了多尊平安時代的佛像，其中最著名的是被列為日本國寶的「木造毘沙門天立像」及吉祥天女像。此外，也展示了鞍馬山獨特的地質礦物與豐富的動植物生態。" },
+            { id: 7, name: "本殿金堂 & 金剛床", img1: "Kurama_Photos/spot_7_1.JPG", img2: "Kurama_Photos/spot_7_2.jpg", history: "鞍馬寺的主殿，供奉著三位一體的「尊天」神祇（代表月亮與慈悲的千手觀世音菩薩、代表太陽與光明的毘沙門天王、代表大地與生命力的護法魔王尊）。大殿正前方的石板地中央，嵌有象徵宇宙中心與能量交匯的三角形與星芒圖案——「金剛床」。", significance: "這是京都最強大的「能量景點（Power Spot）」。遊客通常會在本殿前的金剛床中心排隊，雙腳站在星芒中心，雙手合十向大山與天空祈禱，感受與宇宙能量連結的神秘體驗。" },
+            { id: 8, name: "靈寶殿", img1: "Kurama_Photos/spot_8_1.JPG", img2: "Kurama_Photos/spot_8_2.JPG", history: "位於本殿後方幽深的山林步道旁，是一座三層樓的鞍馬山專題博物館。館內一樓為自然科學展示室，二、三樓則為佛教文物與藝術珍藏室。", significance: "館內收藏了多尊平安時代的佛像，其中最著名的是被列為日本國寶的「木造毘沙門天立像」及吉祥天女像。此外，也展示了鞍馬山獨特的地質礦物與豐富的動植物生態。" },
             { id: 9, name: "木之根道", img1: "Kurama_Photos/spot_9_1.jpg", img2: "Kurama_Photos/spot_9_2.JPEG", history: "通往奧之院步道中最著名的自然奇觀。由於鞍馬山的地質是由硬度極高的珪質角岩（Chert）構成，且表土層極薄，樹木的根部無法向下扎深，被迫像青筋般緊貼並浮出岩石表面生長。傳說牛若丸（源義經）就是利用這些起伏的樹根練習輕功和跳躍步伐。", significance: "樹根在地面上盤根交錯，形成極具魔幻與神秘感的森林景觀。由於地質脆弱，在此步行時請特別小心腳下，並儘量避免踩踏暴露的樹根以保護大樹。" },
             { id: 10, name: "大杉權現社", img1: "Kurama_Photos/spot_10_1.jpg", img2: "Kurama_Photos/spot_10_2.jpg", history: "位於木之根道旁，祭祀著山中一棵存活已久的巨型神木「大杉樣」（被信徒視為護法魔王尊的化身）。雖然該神木在過去遭颱風摧毀，但此處至今仍是神聖的信仰中心。", significance: "這裡被稱為「大杉苑瞑想道場」，是一處極為幽靜、空靈的原始森林區域，常有修行者或尋求靈性體驗的人在此閉目冥想，感受森林的治癒能量。" },
             { id: 11, name: "僧正谷不動堂", img1: "Kurama_Photos/spot_11_1.jpg", img2: "Kurama_Photos/spot_11_2.jpg", history: "深藏於茂密杉林山谷中的小堂，堂內供奉著傳說由傳教大師（最澄）親自雕刻的不動明王像。此處是日本謠曲《鞍馬天狗》中，牛若丸與天狗頭目相遇、在月光下苦練劍術的傳奇舞台。", significance: "隱沒在深林山谷中的小木堂，籠罩在寂靜與神秘的氛圍中。不動明王代表著荒野中的智慧與斬斷魔障的決心，是洗滌心靈的平靜站點。" },
@@ -1262,8 +1240,113 @@
             document.querySelector('.app-content').scrollTop = 0;
         }
 
+        const locationMap = {
+            // Hotels
+            "東橫INN 大阪梅田中津1號店": "Toyoko Inn Osaka Umeda Nakatsu No.1",
+            "comfort inn 京都四条烏丸": "Comfort Inn Kyoto Shijo Karasuma",
+            "東橫INN 神戶三宮站前": "Toyoko Inn Kobe Sannomiya-eki Mae",
+            "OMO 關西機場 by 星野集團": "OMO Kansai Airport by Hoshino Resorts",
+            "回家": "Kansai International Airport",
+            
+            // Day 1
+            "關西機場 (KIX) 航廈T2": "Kansai International Airport Terminal 2",
+            "飯店 Check-in 寄存行李": "Toyoko Inn Osaka Umeda Nakatsu No.1",
+            
+            // Day 2
+            "UNIQLO 旗艦店 採購": "Uniqlo LINKS UMEDA",
+            "Right-on 日系服飾": "Right-on LINKS UMEDA",
+            "GU 與 3COINS+plus 採購": "GU LINKS UMEDA",
+            "無印良品 MUJI 關西旗艦店": "無印良品 Grand Front Osaka",
+            
+            // Day 3
+            "抵達枚方公園 (Hirakata Park) 正門": "枚方公園",
+            "暢玩枚方公園 (開園至17:00)": "枚方公園",
+            
+            // Day 4
+            "抵達奈良公園、東大寺": "東大寺",
+            "生駒山上遊園地": "生駒山上遊園地",
+            
+            // Day 5
+            "抵達京都，飯店寄存行李": "Comfort Inn Kyoto Shijo Karasuma",
+            "錦市場美食採買": "錦市場",
+            "鴨川河岸與祇園漫步": "祇園",
+            "先斗町與川床晚餐": "先斗町",
+            
+            // Day 6
+            "抵達鞍馬站，開啟聖山大健行": "鞍馬站",
+            "本殿金堂 & 靈寶殿": "鞍馬寺 本殿金堂",
+            "翻山古道：木之根道至魔王殿": "鞍馬寺 木之根道",
+            "抵達貴船西門，參拜貴船神社": "貴船神社",
+            
+            // Day 7
+            "飯店寄放行李": "Toyoko Inn Kobe Sannomiya-eki Mae",
+            "參拜生田神社": "生田神社",
+            "北野異人館街散策": "北野異人館街",
+            "南京町 (中華街) 與元町商店街": "南京町",
+            "美利堅公園與神戶港塔夜景": "神戶港塔",
+            
+            // Day 8
+            "搭路面電車前往後樂園": "岡山後樂園",
+            "漫步倉敷美觀地區": "倉敷美觀地區",
+            "運河點燈景緻與晚餐": "倉敷美觀地區",
+            
+            // Day 9
+            "參觀世界文化遺產：姬路城": "姬路城",
+            "明石海峽大橋 舞子海上散步道": "舞子海上散步道",
+            "搭乘公車前往摩耶纜車站": "摩耶纜車 摩耶ケーブル駅",
+            "搭乘纜車登頂摩耶山掬星台": "摩耶山 掬星台",
+            
+            // Day 10
+            "上午神戶動物王國": "神戶動物王國",
+            "飯店寄放行李，前往 Outlet": "OMO Kansai Airport by Hoshino Resorts",
+            "臨空城 Outlet 購物": "Rinku Premium Outlets",
+            
+            // Restaurants
+            "なか卯中津一丁目店": "Nakau Nakatsu 1-chome",
+            "彌生軒 (やよい軒) 中津店": "Yayoiken Nakatsu",
+            "全家便利商店 (FamilyMart 中津店)": "FamilyMart Toyosaki 3-chome",
+            "なか卯 中津一丁目店": "Nakau Nakatsu 1-chome",
+            "Nakau なか卯 中津一丁目店": "Nakau Nakatsu 1-chome",
+            "清十郎 大阪燒 (Grand Front Osaka 北館 6F)": "清十郎 Grand Front Osaka",
+            "燒肉の牛太 本陣 (LINKS UMEDA 8F)": "燒肉の牛太 本陣 LINKS UMEDA",
+            "Capricciosa 義式餐廳 (LINKS UMEDA 8F)": "Capricciosa LINKS UMEDA",
+            "ポムの樹 (Pomu之樹 蛋包飯專賣店)": "ポムの樹 枚方パーク店",
+            "Magical Lagoon Kitchen": "Magical Lagoon Kitchen Hirakata Park",
+            "Trattoria & Bar Kuroneko": "Trattoria & Bar Kuroneko Hirakatakoen",
+            "麵鬪庵 (麺闘庵) 烏龍麵": "麵鬪庵",
+            "釜飯茶泡飯 GRANCHA": "GRANCHA 奈良",
+            "頑固豬排 (とんかつ がんこ) 奈良店": "とんかつ がんこ 奈良店",
+            "錦市場 (Nishiki Market) 小吃採買": "錦市場",
+            "先斗町 川床料理 (納涼床)": "先斗町",
+            "貴船流水麵 (ひろ文 Hirobun)": "ひろ文",
+            "鞍馬山門前 湧水蕎麥麵": "鞍馬 蕎麥麵",
+            "Steakland 神戶館 (ステーキランド)": "Steakland 神戶館",
+            "洋食 L'Ami (ラミ)": "洋食 L'Ami",
+            "Red Rock 三宮東店/本店": "Red Rock 三宮東店",
+            "神戶牛ステーキ モーリヤ (Mouriya 三宮店)": "Mouriya 三宮店",
+            "牛カツ京都勝牛 (Kobe Harborland umie MOSAIC店)": "京都勝牛 Kobe Harborland umie MOSAIC",
+            "チャオチャオ餃子 (Chao Chao 三宮店)": "チャオチャオ餃子 三宮店",
+            "味司 野村 (Ajitsukasa Nomura)": "味司 野村",
+            "吾妻壽司 (岡山站店)": "吾妻壽司 岡山站",
+            "お食事処 四季 (Shiki)": "お食事処 四季 岡山",
+            "倉敷らーめん 升家 (Masuya)": "倉敷らーめん 升家",
+            "喜與貞 (Kiyoutei)": "喜與貞 倉敷",
+            "名代とんかつ かっぱ (Kappa)": "名代とんかつ かっぱ",
+            "穴子料理 柊 (Hiiragi 本店)": "穴子料理 柊 本店",
+            "おden食堂 (Himeji Oden)": "おden食堂 姬路",
+            "とんかつ 赤坂 (Akasaka)": "とんかつ 赤坂 姬路",
+            "炭火焼肉 La Shomon": "炭火焼肉 La Shomon",
+            "神戶牛らーめん 八坐和 (Yazawa 三宮店)": "神戶牛らーめん 八坐和 三宮店",
+            "鳥貴族 (三宮店)": "鳥貴族 三宮店",
+            "臨空城 Outlet 美食廣場 / 餐廳區": "Rinku Premium Outlets",
+            "關西機場 T2 餐廳 / 伴手禮店": "Kansai International Airport Terminal 2"
+        };
+
         // Helper to clean search titles for Google Maps
         function getSearchQuery(title) {
+            if (locationMap[title]) {
+                return locationMap[title];
+            }
             let query = title.replace(/^(抵達|參觀|遊玩|入住|探索|前往|出發|漫步|搭乘)/, '');
             query = query.replace(/( 採購| 購物| 漫步| 餵鹿\/文化探索| 宵夜晚餐)$/, '');
             return query;
@@ -1290,16 +1373,26 @@
                 // Choose icon based on activity description keywords
                 let iconClass = "fa-solid fa-circle-dot";
                 const desc = item.title.toLowerCase();
-                if (desc.includes("機") || desc.includes("飛行") || desc.includes("航空")) iconClass = "fa-solid fa-plane";
-                else if (desc.includes("南海") || desc.includes("特急") || desc.includes("電車") || desc.includes("地鐵") || desc.includes("列車")) iconClass = "fa-solid fa-train";
-                else if (desc.includes("飯店") || desc.includes("check") || desc.includes("住宿") || desc.includes("退房")) iconClass = "fa-solid fa-hotel";
-                else if (desc.includes("餐") || desc.includes("吃") || desc.includes("小吃")) iconClass = "fa-solid fa-utensils";
-                else if (desc.includes("購") || desc.includes("採") || desc.includes("逛") || desc.includes("uniqlo") || desc.includes("muji") || desc.includes("gu")) iconClass = "fa-solid fa-bag-shopping";
-                else if (desc.includes("玩") || desc.includes("公園") || desc.includes("園地") || desc.includes("神社") || desc.includes("寺")) iconClass = "fa-solid fa-location-dot";
+                if (desc.includes("機") || desc.includes("飛行") || desc.includes("航空") || desc.includes("返台")) {
+                    iconClass = "fa-solid fa-plane";
+                } else if (desc.includes("南海") || desc.includes("特急") || desc.includes("電車") || desc.includes("地鐵") || desc.includes("列車") || desc.includes("jr") || desc.includes("新幹線") || desc.includes("公車") || desc.includes("巴士") || desc.includes("步行") || desc.includes("返回") || desc.includes("折返") || desc.includes("回飯店") || desc.includes("出發前往") || desc.includes("啟程")) {
+                    iconClass = "fa-solid fa-train";
+                } else if (desc.includes("飯店") || desc.includes("check") || desc.includes("住宿") || desc.includes("退房")) {
+                    iconClass = "fa-solid fa-hotel";
+                } else if (desc.includes("餐") || desc.includes("吃") || desc.includes("小吃")) {
+                    iconClass = "fa-solid fa-utensils";
+                } else if (desc.includes("購") || desc.includes("採") || desc.includes("逛") || desc.includes("uniqlo") || desc.includes("muji") || desc.includes("gu")) {
+                    iconClass = "fa-solid fa-bag-shopping";
+                } else if (desc.includes("玩") || desc.includes("公園") || desc.includes("園地") || desc.includes("神社") || desc.includes("寺")) {
+                    iconClass = "fa-solid fa-location-dot";
+                }
                 
-                // Inject Map Pin icon if it's a physical destination (not flights/trains)
+                // Inject Map Pin icon if it's a physical destination (not flights/trains) or explicitly mapped
                 let mapPinHTML = "";
-                if (iconClass !== "fa-solid fa-plane" && iconClass !== "fa-solid fa-train") {
+                const isExplicitlyMapped = locationMap[item.title] !== undefined;
+                const isTransit = (iconClass === "fa-solid fa-plane" || iconClass === "fa-solid fa-train") && !isExplicitlyMapped;
+                
+                if (!isTransit) {
                     const query = encodeURIComponent(getSearchQuery(item.title));
                     mapPinHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" style="margin-left: 8px; color: #E63946; font-size: 16px; text-decoration: none;" title="地圖導航"><i class="fa-solid fa-map-pin"></i></a>`;
                 }
@@ -1335,7 +1428,7 @@
                     lunches.forEach(item => {
                         const fCard = document.createElement("div");
                         fCard.className = `food-card ${item.isPrimary ? 'primary' : ''}`;
-                        const query = encodeURIComponent(item.name);
+                        const query = encodeURIComponent(getSearchQuery(item.name));
                         const mapPinHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" style="margin-left: 8px; color: #E63946; font-size: 16px; text-decoration: none;" title="地圖導航"><i class="fa-solid fa-map-pin"></i></a>`;
                         fCard.innerHTML = `
                             <div class="food-badge">${item.badge}</div>
@@ -1355,7 +1448,7 @@
                     dinners.forEach(item => {
                         const fCard = document.createElement("div");
                         fCard.className = `food-card ${item.isPrimary ? 'primary' : ''}`;
-                        const query = encodeURIComponent(item.name);
+                        const query = encodeURIComponent(getSearchQuery(item.name));
                         const mapPinHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" style="margin-left: 8px; color: #E63946; font-size: 16px; text-decoration: none;" title="地圖導航"><i class="fa-solid fa-map-pin"></i></a>`;
                         fCard.innerHTML = `
                             <div class="food-badge">${item.badge}</div>
@@ -1385,7 +1478,7 @@
                 hotelCard.style.display = "block";
                 document.getElementById("day-hotel-name").innerText = data.hotel;
                 document.getElementById("day-hotel-address").innerText = data.hotelAddress || "";
-                document.getElementById("day-hotel-map").setAttribute("href", data.hotelMapUrl);
+                document.getElementById("day-hotel-map").setAttribute("href", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(getSearchQuery(data.hotel)));
             }
         }
 
