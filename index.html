@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -44,6 +44,7 @@
             justify-content: center;
             min-height: 100vh;
             overflow: hidden; /* Lock viewport for app feel */
+            font-size: 16px; /* Base font size scaled up */
         }
 
         /* Mobile App Container */
@@ -63,7 +64,7 @@
         .app-header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-crimson) 100%);
             color: white;
-            padding: 10px 16px 8px; /* Slimmed down height by 50% */
+            padding: 12px 16px 10px; /* Compact padding */
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             flex-shrink: 0; /* Header stays fixed at top */
@@ -74,11 +75,11 @@
         .header-top {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .header-logo {
-            font-size: 20px; /* Smaller logo */
+            font-size: 24px; /* Scaled up logo */
             color: var(--accent-gold);
             animation: float 3s ease-in-out infinite;
         }
@@ -90,14 +91,14 @@
         }
 
         .header-title-box h1 {
-            font-size: 15px; /* Compact title size */
+            font-size: 18px; /* Compact but larger title size */
             font-weight: 700;
             margin: 0 0 2px 0;
             letter-spacing: 0.5px;
         }
 
         .header-title-box p {
-            font-size: 10px; /* Smaller subtitle */
+            font-size: 13px; /* Scaled up subtitle */
             margin: 0;
             opacity: 0.85;
             display: flex;
@@ -106,7 +107,7 @@
 
         /* Horizontal Day Selector */
         .day-selector-wrapper {
-            margin-top: 6px; /* Compact margin */
+            margin-top: 8px; /* Compact margin */
             overflow-x: auto;
             scrollbar-width: none; /* Firefox */
         }
@@ -117,7 +118,7 @@
 
         .day-selector {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             padding: 2px 0;
         }
 
@@ -126,9 +127,9 @@
             background: rgba(255, 255, 255, 0.15);
             color: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 4px 8px; /* Slimmer buttons */
+            padding: 6px 10px; /* Comfortably sized day buttons */
             border-radius: 8px;
-            font-size: 11px;
+            font-size: 13px;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
@@ -144,7 +145,7 @@
 
         .day-btn span {
             display: block;
-            font-size: 8px;
+            font-size: 9px;
             opacity: 0.8;
             margin-top: 1px;
         }
@@ -163,8 +164,8 @@
             flex: 1;
             background: none;
             border: none;
-            padding: 8px 0; /* Slimmer tab padding */
-            font-size: 12px;
+            padding: 10px 0; /* Comfortable tab padding */
+            font-size: 14px; /* Larger tab font size */
             font-weight: 500;
             color: var(--text-muted);
             cursor: pointer;
@@ -173,11 +174,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
 
         .tab-btn i {
-            font-size: 16px;
+            font-size: 20px; /* Larger icons */
         }
 
         .tab-btn.active {
@@ -191,7 +192,7 @@
             padding: 16px;
             flex-grow: 1;
             overflow-y: auto; /* Content area scrolls independently */
-            padding-bottom: 96px; /* Spacing for bottom floating bar */
+            padding-bottom: 24px; /* Reduced bottom padding (No bottom hotel bar) */
             -webkit-overflow-scrolling: touch;
         }
 
@@ -220,7 +221,7 @@
         }
 
         .card-title {
-            font-size: 15px;
+            font-size: 18px; /* Larger card title */
             font-weight: 700;
             margin: 0 0 12px 0;
             display: flex;
@@ -271,30 +272,34 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
             color: var(--primary-crimson);
-            font-size: 13px;
+            font-size: 16px; /* Larger time font */
             margin-bottom: 4px;
         }
 
         .timeline-body {
-            font-size: 14px;
+            font-size: 17px; /* Larger body font size */
             line-height: 1.6;
         }
 
         .timeline-event-title {
+            font-size: 18px; /* Larger event title */
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .timeline-event-desc {
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 16px; /* Larger event description */
             white-space: pre-line;
         }
 
         /* Restaurant Cards */
         .food-section-title {
-            font-size: 13px;
+            font-size: 16px; /* Larger food section title */
             font-weight: 700;
             color: var(--primary-crimson);
             text-transform: uppercase;
@@ -323,7 +328,7 @@
         .food-badge {
             background-color: var(--text-muted);
             color: white;
-            font-size: 10px;
+            font-size: 13px; /* Larger badge font */
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 700;
@@ -337,14 +342,16 @@
         }
 
         .food-name {
-            font-size: 15px;
+            font-size: 18px; /* Larger restaurant name */
             font-weight: 700;
             color: var(--text-main);
             margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
         }
 
         .food-details {
-            font-size: 13px;
+            font-size: 16px; /* Larger restaurant details */
             color: var(--text-muted);
             line-height: 1.5;
             white-space: pre-line;
@@ -352,7 +359,7 @@
 
         /* Transit & Pass details styling */
         .transit-desc {
-            font-size: 13.5px;
+            font-size: 16.5px; /* Larger transit description */
             line-height: 1.6;
             color: var(--text-main);
             white-space: pre-line;
@@ -361,7 +368,7 @@
         .pass-badge {
             background: linear-gradient(135deg, #023e8a 0%, #0077b6 100%); /* Ocean gradient badge */
             color: white;
-            font-size: 11px;
+            font-size: 14px; /* Larger pass badge */
             font-weight: 700;
             padding: 4px 8px;
             border-radius: 6px;
@@ -369,63 +376,6 @@
             align-items: center;
             gap: 6px;
             margin-bottom: 12px;
-        }
-
-        /* Bottom Floating Bar */
-        .bottom-nav {
-            position: absolute; /* Fixed relative to mobile mock container */
-            bottom: 16px;
-            left: 16px;
-            right: 16px;
-            width: auto;
-            background: rgba(3, 4, 94, 0.95); /* Deep navy base */
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(3, 4, 94, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .bottom-hotel-info {
-            max-width: 75%;
-        }
-
-        .bottom-hotel-info span {
-            font-size: 9px;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .bottom-hotel-name {
-            font-size: 13.5px;
-            font-weight: 700;
-            margin: 2px 0 0 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .bottom-map-btn {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-            text-decoration: none;
         }
 
         /* Kurama Guide Tab Layout */
@@ -465,7 +415,7 @@
         }
 
         .kurama-spot-title {
-            font-size: 15px;
+            font-size: 18px; /* Larger spot title */
             font-weight: 700;
             flex-grow: 1;
             margin-left: 12px;
@@ -476,7 +426,7 @@
         }
 
         .kurama-spot-desc {
-            font-size: 13px;
+            font-size: 16px; /* Larger spot description */
             line-height: 1.6;
             margin-bottom: 12px;
         }
@@ -489,7 +439,7 @@
 
         .kurama-spot-desc h4 {
             margin: 0 0 6px 0;
-            font-size: 12px;
+            font-size: 15px; /* Larger section subheaders */
             color: var(--primary-crimson);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -528,7 +478,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 8px;
-            font-size: 12.5px;
+            font-size: 15px; /* Larger table text */
         }
 
         .savings-table th, .savings-table td {
@@ -607,8 +557,24 @@
                     <div class="card-title">
                         <i class="fa-solid fa-route"></i> 今日路線概述
                     </div>
-                    <div id="day-itinerary-summary" style="font-size: 14px; line-height: 1.5; color: var(--text-main);">
+                    <div id="day-itinerary-summary" style="font-size: 16px; line-height: 1.5; color: var(--text-main);">
                         <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Hotel Card inside Itinerary Tab -->
+                <div class="card" id="day-hotel-card" style="display: none;">
+                    <div class="card-title" style="color: var(--primary-crimson);">
+                        <i class="fa-solid fa-hotel"></i> 今日住宿
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="flex-grow: 1;">
+                            <div id="day-hotel-name" style="font-size: 18px; font-weight: 700; color: var(--text-main);"></div>
+                            <div id="day-hotel-address" style="font-size: 15px; color: var(--text-muted); margin-top: 4px;"></div>
+                        </div>
+                        <a id="day-hotel-map" href="#" target="_blank" style="color: #E63946; font-size: 24px; padding: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                            <i class="fa-solid fa-map-pin"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -644,8 +610,8 @@
             <!-- 4. Kurama Guide Tab -->
             <div id="panel-kurama" class="content-panel">
                 <div class="card" style="margin-bottom: 12px; background: linear-gradient(135deg, #1b3a24 0%, #2e5c38 100%); color: white; border: none;">
-                    <h3 style="margin: 0 0 6px 0; font-size: 16px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
-                    <p style="margin: 0; font-size: 12.5px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
+                    <h3 style="margin: 0 0 6px 0; font-size: 18px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
+                    <p style="margin: 0; font-size: 15px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
                 </div>
                 <div class="kurama-container" id="kurama-guide-container">
                     <!-- Loaded dynamically from JSON config -->
@@ -658,11 +624,11 @@
                     <div class="card-title">
                         <i class="fa-solid fa-ticket-simple"></i> 關西廣域鐵路周遊券 (5日 ￥12,000)
                     </div>
-                    <p style="font-size: 13.5px; line-height: 1.6; margin: 0 0 16px 0;">
+                    <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;">
                         本行程後半段（07/21 - 07/25）啟用 5 日關西廣域周遊券。以下為五人家庭旅遊的超划算省錢試算與乘車攻略。
                     </p>
                     
-                    <h4 style="font-size: 14px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
+                    <h4 style="font-size: 16px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
                     <table class="savings-table">
                         <thead>
                             <tr>
@@ -701,19 +667,19 @@
                                 <td colspan="2">實際車資總計 (單人)</td>
                                 <td>￥18,300</td>
                             </tr>
-                            <tr class="total-row" style="background-color: rgba(74,0,0,0.05); color: var(--primary-crimson);">
+                            <tr class="total-row" style="background-color: rgba(3, 4, 94, 0.05); color: var(--primary-crimson);">
                                 <td colspan="2">周遊券售價 (單人)</td>
                                 <td>￥12,000</td>
                             </tr>
-                            <tr class="total-row" style="background-color: rgba(0,128,0,0.1); color: green;">
+                            <tr class="total-row" style="background-color: rgba(46, 125, 50, 0.1); color: #2E7D32;">
                                 <td colspan="2">單人省下額度</td>
                                 <td class="savings-accent">現省 ￥6,300</td>
                             </tr>
                         </tbody>
                     </table>
                     
-                    <div style="background-color: rgba(0, 128, 0, 0.05); border-left: 3px solid green; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 13px; line-height: 1.5;">
-                        <i class="fa-solid fa-calculator" style="color: green; margin-right: 6px;"></i>
+                    <div style="background-color: rgba(46, 125, 50, 0.05); border-left: 3px solid #2E7D32; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 15.5px; line-height: 1.5;">
+                        <i class="fa-solid fa-calculator" style="color: #2E7D32; margin-right: 6px;"></i>
                         <strong>全家五人省錢總額：</strong><br>
                         單人省下 ￥6,300，全家五人省下總額高達 <strong>￥31,500</strong>！
                     </div>
@@ -723,12 +689,23 @@
                     <div class="card-title">
                         <i class="fa-solid fa-circle-info"></i> 周遊券乘車攻略
                     </div>
-                    <div style="font-size: 13.5px; line-height: 1.6; color: var(--text-main);">
+                    <div style="font-size: 16px; line-height: 1.6; color: var(--text-main);">
                         <strong>1. 啟用區間：</strong><br>
                         建議設定在 <strong>07/21 (二) ~ 07/25 (六)</strong>，完整覆蓋神戶、姬路、岡山、倉敷及前往關西機場的所有長途車程。<br><br>
                         <strong>2. 指定席預約：</strong><br>
                         本周遊券可<strong>無限次預約指定席（劃位）</strong>！可持 Pass 在 JR 車站的綠色售票機或綠色窗口免費劃位，建議在啟用首日一次性預約新神戶 ↔ 岡山的指定席車票。<br><br>
                         <strong>3. 重點避坑提醒：</strong><br>
+                        * <strong>京都 ➔ 神戶</strong>：請一定要坐 <strong>JR 新快速</strong> (直達約51分)，勿乘坐阪急電鐵 (Pass不適用，需額外付費)。<br>
+                        * <strong>新神戶 ➔ 岡山</strong>：可免費搭乘山陽新幹線所有車型 (含 Nozomi 希望號、Sakura 櫻花號) 的指定席或自由席。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript Logic -->
+    <script>
+        // Full Itinerary Data in JSON structure��</strong><br>
                         * <strong>京都 ➔ 神戶</strong>：請一定要坐 <strong>JR 新快速</strong> (直達約51分)，勿乘坐阪急電鐵 (Pass不適用，需額外付費)。<br>
                         * <strong>新神戶 ➔ 岡山</strong>：可免費搭乘山陽新幹線所有車型 (含 Nozomi 希望號、Sakura 櫻花號) 的指定席或自由席。
                     </div>
@@ -1179,15 +1156,15 @@
             {
                 date: "07/24",
                 dayOfWeek: "星期五",
-                hotel: "臨空城飯店",
+                hotel: "OMO 關西機場 by 星野集團",
                 hotelAddress: "〒598-0048 大阪府泉佐野市りんくう往来北1-833",
-                hotelTel: "N/A",
-                hotelMapUrl: "https://maps.google.com/?q=598-0048+Osaka+Rinku+Town",
+                hotelTel: "072-460-1090",
+                hotelMapUrl: "https://maps.google.com/?q=OMO+Kansai+Airport+by+Hoshino+Resorts",
                 summary: "上午神戶動物王國 ➔ 下午前往臨空城 Outlet 瘋狂採購",
                 timeline: [
                     { time: "09:30", title: "上午景點推薦", desc: "推薦 1：神戶動物王國 (超人氣親子景點，可近距離撫摸水豚、餵食小動物)。\n推薦 2：北野異人館街補漏景點。" },
                     { time: "13:00", title: "搭 JR 前往臨空城", desc: "JR三宮站 ➔ 臨空城站 (持周遊券免費，搭乘 JR 快速列車約1.5小時，￥1,510)。" },
-                    { time: "14:40", title: "飯店寄放行李，前往 Outlet", desc: "入住臨空城飯店，隨後步行前往 Rinku Premium Outlets。" },
+                    { time: "14:40", title: "飯店寄放行李，前往 Outlet", desc: "入住 OMO 關西機場飯店，隨後步行前往 Rinku Premium Outlets。" },
                     { time: "15:00", title: "臨空城 Outlet 購物", desc: "瘋狂採購品牌服飾、運動鞋、名牌包，園區內設有大量美食餐廳可供晚餐。" }
                 ],
                 food: [
@@ -1285,6 +1262,13 @@
             document.querySelector('.app-content').scrollTop = 0;
         }
 
+        // Helper to clean search titles for Google Maps
+        function getSearchQuery(title) {
+            let query = title.replace(/^(抵達|參觀|遊玩|入住|探索|前往|出發|漫步|搭乘)/, '');
+            query = query.replace(/( 採購| 購物| 漫步| 餵鹿\/文化探索| 宵夜晚餐)$/, '');
+            return query;
+        }
+
         // Load Day data
         function loadDay(index) {
             const data = itineraryData[index];
@@ -1313,10 +1297,21 @@
                 else if (desc.includes("購") || desc.includes("採") || desc.includes("逛") || desc.includes("uniqlo") || desc.includes("muji") || desc.includes("gu")) iconClass = "fa-solid fa-bag-shopping";
                 else if (desc.includes("玩") || desc.includes("公園") || desc.includes("園地") || desc.includes("神社") || desc.includes("寺")) iconClass = "fa-solid fa-location-dot";
                 
+                // Inject Map Pin icon if it's a physical destination (not flights/trains)
+                let mapPinHTML = "";
+                if (iconClass !== "fa-solid fa-plane" && iconClass !== "fa-solid fa-train") {
+                    const query = encodeURIComponent(getSearchQuery(item.title));
+                    mapPinHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" style="margin-left: 8px; color: #E63946; font-size: 16px; text-decoration: none;" title="地圖導航"><i class="fa-solid fa-map-pin"></i></a>`;
+                }
+
                 itemDiv.innerHTML = `
                     <div class="timeline-time">${item.time}</div>
                     <div class="timeline-body">
-                        <div class="timeline-event-title"><i class="${iconClass}" style="margin-right: 6px; color: var(--primary-crimson);"></i>${item.title}</div>
+                        <div class="timeline-event-title">
+                            <i class="${iconClass}" style="margin-right: 6px; color: var(--primary-crimson);"></i>
+                            ${item.title}
+                            ${mapPinHTML}
+                        </div>
                         <div class="timeline-event-desc">${item.desc}</div>
                     </div>
                 `;
@@ -1340,9 +1335,11 @@
                     lunches.forEach(item => {
                         const fCard = document.createElement("div");
                         fCard.className = `food-card ${item.isPrimary ? 'primary' : ''}`;
+                        const query = encodeURIComponent(item.name);
+                        const mapPinHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" style="margin-left: 8px; color: #E63946; font-size: 16px; text-decoration: none;" title="地圖導航"><i class="fa-solid fa-map-pin"></i></a>`;
                         fCard.innerHTML = `
                             <div class="food-badge">${item.badge}</div>
-                            <div class="food-name">${item.name}</div>
+                            <div class="food-name">${item.name}${mapPinHTML}</div>
                             <div class="food-details">${item.desc}</div>
                         `;
                         foodContainer.appendChild(fCard);
@@ -1358,9 +1355,11 @@
                     dinners.forEach(item => {
                         const fCard = document.createElement("div");
                         fCard.className = `food-card ${item.isPrimary ? 'primary' : ''}`;
+                        const query = encodeURIComponent(item.name);
+                        const mapPinHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" style="margin-left: 8px; color: #E63946; font-size: 16px; text-decoration: none;" title="地圖導航"><i class="fa-solid fa-map-pin"></i></a>`;
                         fCard.innerHTML = `
                             <div class="food-badge">${item.badge}</div>
-                            <div class="food-name">${item.name}</div>
+                            <div class="food-name">${item.name}${mapPinHTML}</div>
                             <div class="food-details">${item.desc}</div>
                         `;
                         foodContainer.appendChild(fCard);
@@ -1370,7 +1369,7 @@
                 foodContainer.innerHTML = `
                     <div class="card" style="text-align: center; color: var(--text-muted); padding: 30px;">
                         <i class="fa-solid fa-circle-info" style="font-size: 24px; margin-bottom: 8px; display: block;"></i>
-                        今日無特定餐廳安排，建議於景點周邊或美食街自由用餐。
+                        今日無特定餐廳安排，建議於景點周邊 or 美食街自由用餐。
                     </div>
                 `;
             }
@@ -1378,21 +1377,15 @@
             // 5. Load Transit
             document.getElementById("day-transit-container").innerText = data.transit;
 
-            // 6. Update Bottom Hotel Bar
-            const hotelBar = document.getElementById("bottom-hotel-bar");
-            const hotelNameText = document.getElementById("bottom-hotel-name-text");
-            const barLabel = document.getElementById("bottom-bar-label");
-            
-            if (data.hotel === "回家") {
-                barLabel.innerText = "今日返台";
-                hotelNameText.innerText = "搭機返家 ✈️";
-                hotelBar.setAttribute("href", "#");
-                hotelBar.style.display = "flex";
+            // 6. Update Hotel Card
+            const hotelCard = document.getElementById("day-hotel-card");
+            if (data.hotel === "回家" || !data.hotel) {
+                hotelCard.style.display = "none";
             } else {
-                barLabel.innerText = "今日住宿";
-                hotelNameText.innerText = data.hotel;
-                hotelBar.setAttribute("href", data.hotelMapUrl);
-                hotelBar.style.display = "flex";
+                hotelCard.style.display = "block";
+                document.getElementById("day-hotel-name").innerText = data.hotel;
+                document.getElementById("day-hotel-address").innerText = data.hotelAddress || "";
+                document.getElementById("day-hotel-map").setAttribute("href", data.hotelMapUrl);
             }
         }
 
@@ -1452,12 +1445,8 @@
             // Scroll content panel back to top
             document.querySelector('.app-content').scrollTop = 0;
 
-            // Hide bottom floating hotel bar if on Kurama or Pass tabs to prevent clutter
-            const hotelBar = document.getElementById("bottom-hotel-bar");
-            if (tabId === 'kurama' || tabId === 'pass') {
-                hotelBar.style.display = "none";
-            } else {
-                // Re-evaluate based on active day
+            // Re-evaluate active day info if needed
+            if (tabId === 'itinerary' || tabId === 'food') {
                 loadDay(currentDayIndex);
             }
         }
