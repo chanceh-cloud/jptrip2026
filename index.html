@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神戶・岡山・京都日本之旅 2026</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-crimson: #8B0000;
+            --primary-dark: #4a0000;
+            --accent-gold: #D4AF37;
+            --bg-color: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --border-color: #E2E8F0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Basic Settings */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', 'Outfit', sans-serif;
+            background-color: #D6DCE5; /* Desktop background wrapper */
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile App Container */
+        .app-container {
+            width: 100%;
+            max-width: 480px; /* Simulates mobile on desktop */
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+            padding-bottom: 90px; /* Space for sticky bottom nav */
+        }
+
+        /* Header section */
+        .app-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-crimson) 100%);
+            color: white;
+            padding: 24px 20px 20px;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            font-size: 28px;
+            color: var(--accent-gold);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .header-title-box h1 {
+            font-size: 19px;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title-box p {
+            font-size: 12px;
+            margin: 0;
+            opacity: 0.85;
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Horizontal Day Selector */
+        .day-selector-wrapper {
+            margin-top: 16px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .day-selector-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .day-selector {
+            display: flex;
+            gap: 8px;
+            padding: 4px 0;
+        }
+
+        .day-btn {
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .day-btn.active {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            border-color: var(--accent-gold);
+        }
+
+        .day-btn span {
+            display: block;
+            font-size: 9px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        /* Navigation Menu Tabs */
+        .nav-tabs {
+            display: flex;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 103px;
+            z-index: 9;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 12px 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tab-btn i {
+            font-size: 18px;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-crimson);
+            font-weight: 700;
+            border-bottom: 3px solid var(--primary-crimson);
+        }
+
+        /* App Content Wrapper */
+        .app-content {
+            padding: 16px;
+            flex-grow: 1;
+        }
+
+        .content-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .content-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards & Info Elements */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-crimson);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        /* Vertical Timeline styling */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-crimson) 30%, var(--border-color) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+            padding-left: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-crimson);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-crimson);
+            z-index: 2;
+        }
+
+        .timeline-time {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--primary-crimson);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-body {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .timeline-event-title {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .timeline-event-desc {
+            color: var(--text-muted);
+            font-size: 13px;
+            white-space: pre-line;
+        }
+
+        /* Restaurant Cards */
+        .food-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary-crimson);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px;
+            background: rgba(139, 0, 0, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .food-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .food-card.primary {
+            border-left-color: var(--accent-gold);
+        }
+
+        .food-badge {
+            background-color: var(--text-muted);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .food-card.primary .food-badge {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .food-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0 0 6px 0;
+        }
+
+        .food-details {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        /* Transit & Pass details styling */
+        .transit-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-main);
+            white-space: pre-line;
+        }
+
+        .pass-badge {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        /* Bottom Floating Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 448px;
+            background: rgba(74, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 14px 18px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bottom-hotel-info {
+            max-width: 75%;
+        }
+
+        .bottom-hotel-info span {
+            font-size: 9px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .bottom-hotel-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            margin: 2px 0 0 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .bottom-map-btn {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        /* Kurama Guide Tab Layout */
+        .kurama-container {
+            padding: 0;
+        }
+
+        .kurama-spot-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .kurama-spot-header {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-crimson));
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .kurama-spot-number {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .kurama-spot-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex-grow: 1;
+            margin-left: 12px;
+        }
+
+        .kurama-spot-body {
+            padding: 16px;
+        }
+
+        .kurama-spot-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .kurama-spot-desc.history {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .kurama-spot-desc h4 {
+            margin: 0 0 6px 0;
+            font-size: 12px;
+            color: var(--primary-crimson);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Image Gallery inside Spot Cards */
+        .kurama-spot-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .kurama-img-wrapper {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background-color: #eee;
+            border: 1px solid var(--border-color);
+        }
+
+        .kurama-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .kurama-img-wrapper:hover .kurama-img {
+            transform: scale(1.05);
+        }
+
+        /* Ticket & Pass savings table */
+        .savings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 12.5px;
+        }
+
+        .savings-table th, .savings-table td {
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .savings-table th {
+            background-color: rgba(139, 0, 0, 0.05);
+            color: var(--primary-crimson);
+            font-weight: 700;
+        }
+
+        .savings-table tr.total-row {
+            font-weight: 700;
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .savings-accent {
+            color: green;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <div class="app-header">
+            <div class="header-top">
+                <i class="fa-solid fa-plane-departure header-logo"></i>
+                <div class="header-title-box">
+                    <h1 id="header-main-title">日本神戶・岡山・京都之旅</h1>
+                    <p><span id="header-date">2026/07/15 - 07/25</span> | <span>五人家庭旅遊</span></p>
+                </div>
+            </div>
+
+            <!-- Horizontal Day Selector -->
+            <div class="day-selector-wrapper">
+                <div class="day-selector" id="day-buttons-container">
+                    <!-- Loaded dynamically via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Menu -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('itinerary')">
+                <i class="fa-regular fa-calendar-check"></i>
+                行程
+            </button>
+            <button class="tab-btn" onclick="switchTab('food')">
+                <i class="fa-solid fa-utensils"></i>
+                美食
+            </button>
+            <button class="tab-btn" onclick="switchTab('transit')">
+                <i class="fa-solid fa-train-subway"></i>
+                交通
+            </button>
+            <button class="tab-btn" onclick="switchTab('kurama')">
+                <i class="fa-solid fa-map-location-dot"></i>
+                鞍馬山導覽
+            </button>
+            <button class="tab-btn" onclick="switchTab('pass')">
+                <i class="fa-solid fa-wallet"></i>
+                票券攻略
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="app-content">
+            <!-- 1. Itinerary Tab -->
+            <div id="panel-itinerary" class="content-panel active">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fa-solid fa-route"></i> 今日路線概述
+                    </div>
+                    <div id="day-itinerary-summary" style="font-size: 14px; line-height: 1.5; color: var(--text-main);">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fa-solid fa-clock"></i> 時間安排與景點
+                    </div>
+                    <div class="timeline" id="day-timeline-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Food Tab -->
+            <div id="panel-food" class="content-panel">
+                <div id="day-food-container">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- 3. Transit Tab -->
+            <div id="panel-transit" class="content-panel">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fa-solid fa-bus"></i> 今日交通線路與花費
+                    </div>
+                    <div class="transit-desc" id="day-transit-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Kurama Guide Tab -->
+            <div id="panel-kurama" class="content-panel">
+                <div class="card" style="margin-bottom: 12px; background: linear-gradient(135deg, #1b3a24 0%, #2e5c38 100%); color: white; border: none;">
+                    <h3 style="margin: 0 0 6px 0; font-size: 16px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
+                    <p style="margin: 0; font-size: 12.5px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
+                </div>
+                <div class="kurama-container" id="kurama-guide-container">
+                    <!-- Loaded dynamically from JSON config -->
+                </div>
+            </div>
+
+            <!-- 5. Pass Guide Tab -->
+            <div id="panel-pass" class="content-panel">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fa-solid fa-ticket-simple"></i> 關西廣域鐵路周遊券 (5日 ￥12,000)
+                    </div>
+                    <p style="font-size: 13.5px; line-height: 1.6; margin: 0 0 16px 0;">
+                        本行程後半段（07/21 - 07/25）啟用 5 日關西廣域周遊券。以下為五人家庭旅遊的超划算省錢試算與乘車攻略。
+                    </p>
+                    
+                    <h4 style="font-size: 14px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
+                    <table class="savings-table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>區間 / 車種</th>
+                                <th>正常車資</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>7/21 (二)</td>
+                                <td>京都 ➔ 神戶 (JR 新快速)</td>
+                                <td>￥1,110</td>
+                            </tr>
+                            <tr>
+                                <td>7/22 (三)</td>
+                                <td>新神戶 ➔ 岡山 ➔ 倉敷 (新幹線+JR)</td>
+                                <td>￥12,700</td>
+                            </tr>
+                            <tr>
+                                <td>7/23 (四)</td>
+                                <td>三宮 ➔ 姬路 ➔ 舞子 ➔ 三宮 (JR)</td>
+                                <td>￥2,600</td>
+                            </tr>
+                            <tr>
+                                <td>7/24 (五)</td>
+                                <td>三宮 ➔ 臨空城 (JR 快速)</td>
+                                <td>￥1,510</td>
+                            </tr>
+                            <tr>
+                                <td>7/25 (六)</td>
+                                <td>臨空城 ➔ 關西機場 (JR)</td>
+                                <td>￥380</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2">實際車資總計 (單人)</td>
+                                <td>￥18,300</td>
+                            </tr>
+                            <tr class="total-row" style="background-color: rgba(74,0,0,0.05); color: var(--primary-crimson);">
+                                <td colspan="2">周遊券售價 (單人)</td>
+                                <td>￥12,000</td>
+                            </tr>
+                            <tr class="total-row" style="background-color: rgba(0,128,0,0.1); color: green;">
+                                <td colspan="2">單人省下額度</td>
+                                <td class="savings-accent">現省 ￥6,300</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="background-color: rgba(0, 128, 0, 0.05); border-left: 3px solid green; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 13px; line-height: 1.5;">
+                        <i class="fa-solid fa-calculator" style="color: green; margin-right: 6px;"></i>
+                        <strong>全家五人省錢總額：</strong><br>
+                        單人省下 ￥6,300，全家五人省下總額高達 <strong>￥31,500</strong>！
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fa-solid fa-circle-info"></i> 周遊券乘車攻略
+                    </div>
+                    <div style="font-size: 13.5px; line-height: 1.6; color: var(--text-main);">
+                        <strong>1. 啟用區間：</strong><br>
+                        建議設定在 <strong>07/21 (二) ~ 07/25 (六)</strong>，完整覆蓋神戶、姬路、岡山、倉敷及前往關西機場的所有長途車程。<br><br>
+                        <strong>2. 指定席預約：</strong><br>
+                        本周遊券可<strong>無限次預約指定席（劃位）</strong>！可持 Pass 在 JR 車站的綠色售票機或綠色窗口免費劃位，建議在啟用首日一次性預約新神戶 ↔ 岡山的指定席車票。<br><br>
+                        <strong>3. 重點避坑提醒：</strong><br>
+                        * <strong>京都 ➔ 神戶</strong>：請一定要坐 <strong>JR 新快速</strong> (直達約51分)，勿乘坐阪急電鐵 (Pass不適用，需額外付費)。<br>
+                        * <strong>新神戶 ➔ 岡山</strong>：可免費搭乘山陽新幹線所有車型 (含 Nozomi 希望號、Sakura 櫻花號) 的指定席或自由席。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Bottom Bar -->
+        <a class="bottom-nav" id="bottom-hotel-bar" href="#" target="_blank">
+            <div class="bottom-hotel-info">
+                <span id="bottom-bar-label">今日住宿</span>
+                <div class="bottom-hotel-name" id="bottom-hotel-name-text">載入中...</div>
+            </div>
+            <div class="bottom-map-btn">
+                <i class="fa-solid fa-location-arrow"></i> 導航
+            </div>
+        </a>
+    </div>
+
+    <!-- Javascript Logic -->
+    <script>
+        // Full Itinerary Data in JSON structure
+        const itineraryData = [
+            {
+                date: "07/15",
+                dayOfWeek: "星期三",
+                hotel: "東橫INN 大阪梅田中津1號店",
+                hotelAddress: "〒531-0072 大阪府大阪市北区豊崎3-20-4",
+                hotelTel: "06-6376-1045",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Osaka+Umeda+Nakatsu+No.1",
+                summary: "抵達日本 ➔ 關西機場 T2 ➔ 特急 Rapi:t ➔ 難波 ➔ 地鐵中津 ➔ 飯店 Check-in ➔ 宵夜晚餐",
+                timeline: [
+                    { time: "14:10", title: "搭乘樂桃航空 MM32", desc: "高雄小港機場 (KHH) 起飛" },
+                    { time: "18:15", title: "抵達關西機場 (KIX) 航廈T2", desc: "降落後排隊入境，搭乘機場免費接駁巴士前往航廈 T1。" },
+                    { time: "19:36", title: "搭乘 南海特急 Rapi:t", desc: "關西機場站 ➔ 南海難波站 (電子票劃位，乘車約38分鐘，單程 ￥1,410)\n* 備選班次 19:43 機場急行 (約45分鐘，￥970)" },
+                    { time: "20:30", title: "地鐵御堂筋線 難波站 ➔ 中津站", desc: "往4號出口步行前往飯店 (地鐵車資 ￥240)" },
+                    { time: "20:50", title: "飯店 Check-in 寄存行李", desc: "入住 東橫INN 大阪梅田中津1號店" },
+                    { time: "21:10", title: "享用宵夜晚餐", desc: "推薦：なか卯中津一丁目店、彌生軒 (やよい軒) 中津店，或全家便利商店" }
+                ],
+                food: [
+                    {
+                        type: "dinner",
+                        badge: "主選晚餐",
+                        isPrimary: true,
+                        name: "Nakau なか卯 中津一丁目店",
+                        desc: "類型：日式丼飯、親子丼、烏龍麵 (均價 ￥500 - ￥1,000)\n特色：平價快捷，招牌親子丼與牛肉麵，營業時間晚，適合搭機抵達後的快速宵夜。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "彌生軒 (やよい軒) 中津店",
+                        desc: "類型：日式定食 (均價 ￥800 - ￥1,500)\n特色：各式燒肉、炸豬排定食，白飯免費無限續，環境乾淨，親子友善。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "全家便利商店 (FamilyMart 中津店)",
+                        desc: "特色：買炸雞、御飯糰、泡麵、甜點回飯店輕鬆享用。"
+                    }
+                ],
+                transit: "1. 樂桃航空 MM32 高雄 ➔ 關西機場\n2. 南海特急 Rapi:t 電子票 ￥1,410 (38分鐘)\n3. 地鐵御堂筋線 難波站 ➔ 中津站 ￥240"
+            },
+            {
+                date: "07/16",
+                dayOfWeek: "星期四",
+                hotel: "東橫INN 大阪梅田中津1號店",
+                hotelAddress: "〒531-0072 大阪府大阪市北区豊崎3-20-4",
+                hotelTel: "06-6376-1045",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Osaka+Umeda+Nakatsu+No.1",
+                summary: "梅田精華街區採購採買日 (LINKS UMEDA & Grand Front Osaka 經典漫步)",
+                timeline: [
+                    { time: "10:00", title: "UNIQLO 旗艦店 採購", desc: "LINKS UMEDA 1F-2F\n大型旗艦店，款式極齊全，可辦理退稅。" },
+                    { time: "11:30", title: "Right-on 日系服飾", desc: "LINKS UMEDA 6F\n休閒日系服飾、牛仔褲採買。" },
+                    { time: "13:00", title: "午餐時間", desc: "前往 LINKS UMEDA 8F 美食街或 Grand Front Osaka 6F 享用大阪燒/燒肉。" },
+                    { time: "14:30", title: "GU 與 3COINS+plus 採購", desc: "LINKS UMEDA 3F\n平價潮流衣物、精緻百元雜貨與生活小物。" },
+                    { time: "17:30", title: "無印良品 MUJI 關西旗艦店", desc: "Grand Front Osaka 北館 2F-4F\n* 路線：從 LINKS UMEDA 3F 走天橋聯絡通道前往 Grand Front Osaka 南館，再沿2F走廊到北館 (步行約5-10分，全程免下雨)。" },
+                    { time: "19:30", title: "晚餐 & 回飯店休息", desc: "梅田站周邊晚餐，採購品送回中津飯店 (步行約10分鐘)。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "主選午餐",
+                        isPrimary: true,
+                        name: "清十郎 大阪燒 (Grand Front Osaka 北館 6F)",
+                        desc: "類型：大阪燒、鐵板燒 (均價 ￥1,000 - ￥1,500)\n特色：正宗大阪燒與文字燒，座位寬敞適合5人家庭聚餐。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "燒肉の牛太 本陣 (LINKS UMEDA 8F)",
+                        desc: "類型：日式燒肉 (均價 ￥1,500 - ￥2,500)\n特色：午間套餐高CP值和牛，有獨立包廂/寬敞卡式座，適合5人。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "Capricciosa 義式餐廳 (LINKS UMEDA 8F)",
+                        desc: "類型：義大利麵、披薩 (均價 ￥1,000 - ￥2,000)\n特色：大份量適合分享的義式家常菜，提供兒童椅與大桌。"
+                    }
+                ],
+                transit: "今日全程在梅田商圈 (LINKS UMEDA 與 Grand Front Osaka) 步行，無需額外地鐵車資。\n從中津飯店往返梅田商圈步行約 10-12 分鐘。"
+            },
+            {
+                date: "07/17",
+                dayOfWeek: "星期五",
+                hotel: "東橫INN 大阪梅田中津1號店",
+                hotelAddress: "〒531-0072 大阪府大阪市北区豊崎3-20-4",
+                hotelTel: "06-6376-1045",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Osaka+Umeda+Nakatsu+No.1",
+                summary: "枚方公園樂園一日遊 ➔ 體驗復古遊樂園 ➔ 京阪電車路線",
+                timeline: [
+                    { time: "09:20", title: "出發前往地鐵中津站", desc: "搭乘地鐵御堂筋線 ➔ 淀屋橋站 (約13分鐘)" },
+                    { time: "09:33", title: "轉乘京阪本線", desc: "淀屋橋站 ➔ 枚方公園站 (搭乘準急列車，車程約39分鐘)" },
+                    { time: "10:25", title: "抵達枚方公園 (Hirakata Park) 正門", desc: "出站步行4分鐘即達樂園大門。" },
+                    { time: "10:30", title: "暢玩枚方公園 (開園至17:00)", desc: "入園門票已含在 Go!Go! 交通套票中。若需暢玩設施，可於園內購買無限暢玩手環 (小學生以上 ￥3,400)。\n* 特色：木造雲霄飛車、超長溜滑梯、親子遊樂設施多元。" },
+                    { time: "13:00", title: "園內午餐", desc: "推薦在園內的 Pomu之樹蛋包飯享用。" },
+                    { time: "17:00", title: "閉園，啟程返回大阪梅田", desc: "搭乘京阪電車返回淀屋橋站 ➔ 轉地鐵回中津飯店。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "主選午餐 (園內)",
+                        isPrimary: true,
+                        name: "ポムの樹 (Pomu之樹 蛋包飯專賣店)",
+                        desc: "類型：日式蛋包飯 (均價 ￥1,000 - ￥1,800)\n特色：知名連鎖蛋包飯，空間寬敞，口味多樣，提供兒童餐，非常適合親子。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 1 (園內)",
+                        isPrimary: false,
+                        name: "Magical Lagoon Kitchen",
+                        desc: "類型：義大利麵、披薩 (均價 ￥1,000 - ￥1,800)\n特色：西式快餐，座位多且有露天景觀陽台區，用餐環境悠閒。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 2 (站旁)",
+                        isPrimary: false,
+                        name: "Trattoria & Bar Kuroneko",
+                        desc: "類型：義式餐廳 (均價 ￥1,200 - ￥2,000)\n特色：靠近枚方公園車站，溫馨友善的義式餐廳，適合出園後用餐。"
+                    }
+                ],
+                transit: "今日推薦使用電子版交通套票【ひらパーGo!Go!チケット (Osaka Metro版)】 (大人 ￥2,660，兒童 ￥1,380)\n含：大阪地鐵一日無限 + 京阪電車指定區間無限 + 枚方公園入園門票 (原價 ￥2,000)\n* 大人省下 ￥500，兒童省下 ￥380。"
+            },
+            {
+                date: "07/18",
+                dayOfWeek: "星期六",
+                hotel: "東橫INN 大阪梅田中津1號店",
+                hotelAddress: "〒531-0072 大阪府大阪市北区豊崎3-20-4",
+                hotelTel: "06-6376-1045",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Osaka+Umeda+Nakatsu+No.1",
+                summary: "奈良餵鹿/文化探索 ➔ 穿越近鐵奈良 ➔ 下午登頂生駒山上遊園地體驗懷舊樂園",
+                timeline: [
+                    { time: "08:40", title: "出發前往近鐵奈良站", desc: "搭地鐵至難波站，轉乘近鐵奈良線 (快速急行直達約38分鐘)。" },
+                    { time: "10:00", title: "抵達奈良公園、東大寺", desc: "步行進入奈良公園，沿途餵小鹿。參觀宏偉的東大寺大佛殿 (門票 ￥800)。" },
+                    { time: "12:00", title: "午餐及購物", desc: "於東向商店街享用經典的巾着烏龍麵，並可購買大佛布丁與中谷堂艾草麻糬。" },
+                    { time: "13:54", title: "搭乘近鐵前往生駒站", desc: "近鐵奈良站 ➔ 生駒站 (搭乘快速急行約15分鐘，￥440)。" },
+                    { time: "14:15", title: "搭乘生駒山可愛登山纜車", desc: "鳥居前站 ➔ 生駒山上站 (搭乘極具特色的貓咪/小狗車廂，往返 ￥1,000)。" },
+                    { time: "15:00", title: "生駒山上遊園地", desc: "遊玩免費入場的懷舊遊樂園 (營業至17:00)。設施可單項買票或加購通票 (大人 ￥4,200)。" },
+                    { time: "17:00", title: "搭纜車與近鐵返回大阪梅田", desc: "原路返回大阪難波，搭地鐵回中津飯店。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "主選午餐",
+                        isPrimary: true,
+                        name: "麵鬪庵 (麺闘庵) 烏龍麵",
+                        desc: "類型：日式烏龍麵 (均價 ￥1,000 - ￥1,500)\n特色：著名豆皮袋烏龍麵 (巾着うどん)，將麵條裝在巨大豆皮袋中，拍照效果佳，人氣火熱需排隊。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "釜飯茶泡飯 GRANCHA",
+                        desc: "類型：釜飯、茶泡飯 (均價 ￥1,500 - ￥2,000)\n特色：點餐後現煮釜飯與大和茶茶泡飯，有寬敞包廂適合家庭聚餐。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "頑固豬排 (とんかつ がんこ) 奈良店",
+                        desc: "類型：日式炸豬排 (均價 ￥1,500 - ￥2,200)\n特色：東向商店街內，炸豬排定食酥脆，座位寬敞，親子友善。"
+                    }
+                ],
+                transit: "今日推薦大人使用【奈良・斑鳩 1day チケット (Osaka Metro版)】 (￥2,200)\n含：大阪地鐵 + 近鐵指定區間 + 生駒登山纜車全包。\n* 大人現省 ￥840 - ￥1,060；兒童建議直接使用 IC 卡 (總車資半價約 ￥1,520) 更划算。"
+            },
+            {
+                date: "07/19",
+                dayOfWeek: "星期日",
+                hotel: "comfort inn 京都四条烏丸",
+                hotelAddress: "〒604-8221 京都府京都市中京区錦小路通室町西入天神山町284-1",
+                hotelTel: "075-211-3611",
+                hotelMapUrl: "https://maps.google.com/?q=Comfort+Inn+Kyoto+Shijo+Karasuma",
+                summary: "京都搬家 ➔ 錦市場美食探索 ➔ 鴨川漫步 ➔ 先斗町川床風情",
+                timeline: [
+                    { time: "09:00", title: "退房出發前往京都", desc: "從阪急大阪梅田站搭乘【阪急京都線】➔ 烏丸站 (車程約40-50分，￥410)。\n* 特色推薦：09:32 班次有復古日式庭園設計的觀光列車「京とれいん 雅洛」可搭乘！" },
+                    { time: "10:15", title: "抵達京都，飯店寄存行李", desc: "入住 comfort inn 京都四条烏丸，辦理寄放行李。" },
+                    { time: "10:30", title: "錦市場美食採買", desc: "步行至錦市場，享用玉子燒、章魚燒、抹茶甜點等各式在地街頭小吃。" },
+                    { time: "14:00", title: "鴨川河岸與祇園漫步", desc: "漫步鴨川看跳石，逛花見小路古老茶屋街，體驗京都優雅古風。" },
+                    { time: "17:30", title: "先斗町與川床晚餐", desc: "漫步於先斗町，並於鴨川納涼床 (川床) 享用晚餐，體驗消暑古風。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "推薦美食區",
+                        isPrimary: true,
+                        name: "錦市場 (Nishiki Market) 小吃採買",
+                        desc: "特色：章魚鵪鶉蛋、三木雞卵玉子燒、豆乳甜甜圈、新鮮刺身串等，每樣約 ￥200 - ￥600。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "晚餐推薦",
+                        isPrimary: true,
+                        name: "先斗町 川床料理 (納涼床)",
+                        desc: "特色：夏日限定的架空川床餐廳，臨水用餐清涼怡人，可享用京豆腐、壽喜燒、懷石料理 (建議提早預訂)。"
+                    }
+                ],
+                transit: "1. 阪急京都線 (大阪梅田 ➔ 烏丸)：￥410 (單程)\n2. 京都區內主要步行，步行範圍涵蓋四条烏丸、錦市場、鴨川、先斗町。"
+            },
+            {
+                date: "07/20",
+                dayOfWeek: "星期一",
+                hotel: "comfort inn 京都四条烏丸",
+                hotelAddress: "〒604-8221 京都府京都市中京区錦小路通室町西入天神山町284-1",
+                hotelTel: "075-211-3611",
+                hotelMapUrl: "https://maps.google.com/?q=Comfort+Inn+Kyoto+Shijo+Karasuma",
+                summary: "鞍馬山 ➔ 貴船神社古道大健行 (森林芬多精、天狗傳說與清涼川床體驗)",
+                timeline: [
+                    { time: "08:30", title: "啟程前往鞍馬山", desc: "1. 步行至 阪急烏丸站 ➔ 河原町站 (￥160)\n2. 步行至 京阪祇園四條站 ➔ 出町柳站 (￥220)\n3. 轉乘 叡山電車 ➔ 鞍馬站 (￥430，約30分鐘)。" },
+                    { time: "10:00", title: "抵達鞍馬站，開啟聖山大健行", desc: "走出鞍馬站迎面而來巨大的大天狗面具。進入仁王門 (愛山費 ￥500)，在普明殿可自費搭乘山門纜車 (￥200) 到多寶塔，或徒步經由岐神社上山。" },
+                    { time: "11:30", title: "本殿金堂 & 靈寶殿", desc: "抵達本殿金堂，雙腳站在「金剛床」星芒中心祈禱。後方可參觀收藏國寶佛像的靈寶殿博物館。" },
+                    { time: "12:30", title: "翻山古道：木之根道至魔王殿", desc: "踏上盤根錯節的「木之根道」，經過大杉權現社、僧正谷不動堂 (義經習武之地)，最後抵達奧之院魔王殿。" },
+                    { time: "14:30", title: "抵達貴船西門，參拜貴船神社", desc: "自魔王殿下山抵達西門出口，右轉步行參拜著名繪馬發源地「貴船神社」，體驗特別的水占卜 (水みくじ ￥200)。" },
+                    { time: "16:00", title: "搭巴士與電車返回京都", desc: "搭京都巴士33路 (貴船 ➔ 貴船口 ￥170)，搭乘叡山電車及京阪/ Hankyu 原路折返烏丸。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "推薦午餐/點心",
+                        isPrimary: true,
+                        name: "貴船流水麵 (ひろ文 Hirobun)",
+                        desc: "類型：流水素麵 (每人約 ￥2,000)\n特色：夏日限定的超人氣體驗，冰涼的素麵順著竹筒流下，需用筷子夾起沾醬食用，趣味十足 (排隊時間長，建議抵達後先抽整理券)。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選",
+                        isPrimary: false,
+                        name: "鞍馬山門前 湧水蕎麥麵",
+                        desc: "特色：鞍馬站附近的古樸蕎麥麵店，享用清爽的鯡魚蕎麥麵 (にしんそば，約 ￥1,000 - ￥1,500)。"
+                    }
+                ],
+                transit: "今日推薦使用【地下鐵＆叡電鞍馬・貴船當天往返票】 (￥2,100)\n含：地鐵全線 + 京阪指定區間 + 叡山電車一日無限。\n* 註：貴船口至貴船巴士 (￥170/單程) 與鞍馬寺愛山費 (￥500) 需另付。"
+            },
+            {
+                date: "07/21",
+                dayOfWeek: "星期二",
+                hotel: "東橫INN 神戶三宮站前",
+                hotelAddress: "〒651-0097 兵庫県神戸市中央区布引町4丁目3-8",
+                hotelTel: "078-272-2845",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Kobe+Sannomiya-eki+Mae",
+                summary: "京都 ➔ 神戶三宮 ➔ 生田神社 ➔ 北野異人館 ➔ 南京町中華街 ➔ 美利堅公園與神戶港塔夜景",
+                timeline: [
+                    { time: "11:00", title: "搭乘 JR 新快速前往神戶", desc: "JR京都站 ➔ JR三宮站 (持周遊券免費，搭乘新快速直達約51分鐘)。" },
+                    { time: "12:00", title: "飯店寄放行李", desc: "出三宮站步行約5分鐘，將行李寄存於 東橫INN 神戶三宮站前。" },
+                    { time: "12:30", title: "午餐：美味神戶牛", desc: "於三宮站旁高 CP 值的 Steakland 享用神戶牛排午間套餐。" },
+                    { time: "14:00", title: "參拜生田神社", desc: "步行前往市中心著名古老結緣神社生田神社，在生田之森體驗趣味的「水占卜」。" },
+                    { time: "15:30", title: "北野異人館街散策", desc: "漫步沿坡道向上的異人館街，參觀風見雞之館、萌黃之館，並在百年古蹟星巴克異人館店喝下午茶。" },
+                    { time: "17:00", title: "南京町 (中華街) 與元町商店街", desc: "下山前往南京町中華街品嚐小吃，順道逛逛傳統的元町商店街。" },
+                    { time: "18:30", title: "美利堅公園與神戶港塔夜景", desc: "漫步神戶港，欣賞經典港灣紅塔與海景。可預約登頂全新整修的神戶港塔 (預約門票 ￥1,000)，隨後於 Mosaic 廣場晚餐。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "主選午餐",
+                        isPrimary: true,
+                        name: "Steakland 神戶館 (ステーキランド)",
+                        desc: "類型：神戶牛鐵板燒 (午間套餐約 ￥3,500 - ￥4,500)\n特色：三宮站旁超熱門的高 CP 值鐵板燒，師傅在面前親自煎烤神戶牛，家庭聚餐氣氛佳。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "洋食 L'Ami (ラミ)",
+                        desc: "類型：日式洋食 (均價 ￥1,200 - ￥1,800)\n特色：招牌蓬鬆歐姆蛋包飯、蟹肉奶油可樂餅，味道精緻的溫馨小店。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "Red Rock 三宮東店/本店",
+                        desc: "類型：烤牛肉丼飯、牛排丼飯 (均價 ￥1,200 - ￥1,800)\n特色：層層堆疊如火山般的炙燒牛肉丼，視覺效果極佳。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "主選晚餐",
+                        isPrimary: true,
+                        name: "神戶牛ステーキ モーリヤ (Mouriya 三宮店)",
+                        desc: "類型：頂級神戶牛排鐵板燒 (晚餐套餐約 ￥8,000 - ￥15,000)\n特色：創立百年的經典老字號，嚴選最高品質神戶牛，肉質入口即化。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "牛カツ京都勝牛 (Kobe Harborland umie MOSAIC店)",
+                        desc: "類型：炸牛排定食 (均價 ￥2,000 - ￥3,000)\n特色：位於港區 Mosaic 3F，可一邊品嚐炸牛排，一邊欣賞美麗的神戶港彩燈夜景。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "チャオチャオ餃子 (Chao Chao 三宮店)",
+                        desc: "類型：一口餃子、居酒屋 (每人約 ￥1,500 - ￥2,500)\n特色：招牌脆皮薄皮一口餃子，搭配冰生啤酒，非常放鬆。"
+                    }
+                ],
+                transit: "1. 京都 ➔ 三宮：搭乘【JR新快速】 (持關西廣域周遊券免費，單程原價 ￥1,110)。\n2. 市區交通：Sannomiya ↔ Harborland 搭 JR (持Pass免費)。北野異人館可步行或搭 City Loop 觀光巴士 (單程 ￥260)。"
+            },
+            {
+                date: "07/22",
+                dayOfWeek: "星期三",
+                hotel: "東橫INN 神戶三宮站前",
+                hotelAddress: "〒651-0097 兵庫県神戸市中央区布引町4丁目3-8",
+                hotelTel: "078-272-2845",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Kobe+Sannomiya-eki+Mae",
+                summary: "神戶 ➔ 岡山城/後樂園 ➔ 下午前往倉敷美觀地區 (柳樹運河漫步與日落點燈)",
+                timeline: [
+                    { time: "08:00", title: "出發前往新神戶站", desc: "搭地鐵或步行至 新神戶站 (地鐵單程 ￥210)。" },
+                    { time: "08:30", title: "搭乘山陽新幹線前往岡山", desc: "新神戶站 ➔ 岡山站 (持周遊券免費，搭乘新幹線さくら約35分)。" },
+                    { time: "09:15", title: "搭路面電車前往後樂園", desc: "岡山站 ➔ 城下站 (路面電車單程 ￥120)；步行參觀岡山城 (烏城) 與後樂園。" },
+                    { time: "11:30", title: "午餐：體驗岡山特色風味", desc: "品嚐岡山特產醬汁豬排丼 (デミカツ丼) 或壽司。" },
+                    { time: "13:00", title: "搭 JR 前往倉敷", desc: "岡山站 ➔ 倉敷站 (搭乘 JR 山陽本線，持周遊券免費，車程約17分)。" },
+                    { time: "13:30", title: "漫步倉敷美觀地區", desc: "觀賞運河兩岸柳樹與白牆老屋。推薦現場預約搭乘「倉敷川舟流し」手搖船 (￥500)。" },
+                    { time: "18:30", title: "運河點燈景緻與晚餐", desc: "日落後運河兩岸古色古香的燈光亮起，欣賞絕美夜色並於美觀地區晚餐。" },
+                    { time: "20:00", title: "搭新幹線折返神戶", desc: "搭 JR 回岡山，換乘新幹線返回新神戶，搭地鐵回三宮飯店。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "主選午餐 (岡山)",
+                        isPrimary: true,
+                        name: "味司 野村 (Ajitsukasa Nomura)",
+                        desc: "類型：醬汁豬排丼 (均價 ￥1,000 - ￥1,500)\n特色：岡山名物「デミカツ丼」(淋上特製牛肉多密醬的炸豬排蓋飯)，微甜香濃，深受大家喜愛。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "吾妻壽司 (岡山站店)",
+                        desc: "類型：日式壽司 (均價 ￥1,500 - ￥2,500)\n特色：名產「岡山ばら寿司」(散壽司)，舖滿海鮮與蔬菜，及招牌醋漬鰆魚壽司。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "お食事処 四季 (Shiki)",
+                        desc: "類型：日式定食 (均價 ￥1,200 - ￥2,000)\n特色：後樂園附近老字號，提供高品質日式烤魚、天婦羅等家常套餐。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "主選晚餐 (倉敷)",
+                        isPrimary: true,
+                        name: "倉敷らーめん 升家 (Masuya)",
+                        desc: "類型：日式拉麵 (均價 ￥900 - ￥1,300)\n特色：湯頭使用瀨戶內海魚乾與在地倉敷醬油熬製，搭配獨特叉燒，是倉敷在地代表性拉麵。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "喜與貞 (Kiyoutei)",
+                        desc: "類型：日式和食 (均價 ￥2,000 - ￥4,000)\n特色：位於美觀地區旁，提供精緻的瀨戶內海海鮮刺身、天婦羅定食，用餐環境安靜。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "名代とんかつ かっぱ (Kappa)",
+                        desc: "類型：日式炸豬排 (均價 ￥1,200 - ￥1,800)\n特色：倉敷超人氣排隊名店，酥脆炸豬排淋上香濃的微甜法式醬汁。"
+                    }
+                ],
+                transit: "1. 新神戶 ↔ 岡山：搭乘【山陽新幹線】 (持周遊券免費指定席，單程 ￥6,020)。\n2. 岡山 ↔ 倉敷：搭乘【JR山陽本線】 (持周遊券免費，單程 ￥330)。\n3. 自費項目：地鐵三宮 ↔ 新神戶 (￥210 * 2)，岡山路面電車 (￥120 * 2)。"
+            },
+            {
+                date: "07/23",
+                dayOfWeek: "星期四",
+                hotel: "東橫INN 神戶三宮站前",
+                hotelAddress: "〒651-0097 兵庫県神戸市中央区布引町4丁目3-8",
+                hotelTel: "078-272-2845",
+                hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Kobe+Sannomiya-eki+Mae",
+                summary: "神戶 ➔ 姬路城 (白鷺城) ➔ 舞子明石大橋海上散步 ➔ 傍晚登頂摩耶山看千萬夜景",
+                timeline: [
+                    { time: "08:30", title: "搭 JR 前往姬路", desc: "JR三宮站 ➔ JR姬路站 (持周遊券免費，搭乘新快速直達約40分鐘)。" },
+                    { time: "09:15", title: "參觀世界文化遺產：姬路城", desc: "出站步行約15分，參觀全日本保存最完整的木造天守閣「白鷺城」(門票 ￥1,000)。" },
+                    { time: "11:30", title: "午餐：享用姬路名產", desc: "品嚐姬路特產星鰻蓋飯或沾薑汁醬油的姬路關東煮。" },
+                    { time: "13:00", title: "搭 JR 前往舞子站", desc: "姬路站 ➔ 舞子站 (持周遊券免費，車程約30分鐘)。" },
+                    { time: "13:30", title: "明石海峽大橋 舞子海上散步道", desc: "漫步於架設在大橋鋼骨內、離海面47公尺高的玻璃透明展望步道，體驗震撼的海峽視角。" },
+                    { time: "15:30", title: "搭 JR 返回三宮站", desc: "舞子站 ➔ 三宮站 (持周遊券免費，約20分鐘)。" },
+                    { time: "16:30", title: "搭乘公車前往摩耶纜車站", desc: "於三宮站前搭乘神戶市公車 18 路 ➔ 摩耶纜車下 (約25分鐘，單程 ￥210)。" },
+                    { time: "17:00", title: "搭纜車登頂摩耶山掬星台", desc: "搭乘摩耶纜車 + 空中纜車 (Maya View Line 往返 ￥1,800) 登上山頂。觀賞夕陽與全日本三大夜景之一的「千萬夜景」點亮。" },
+                    { time: "20:30", title: "搭纜車下山，返回三宮晚餐", desc: "下山搭 18 路公車回三宮站，享用豐盛的晚餐。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "主選午餐 (姬路)",
+                        isPrimary: true,
+                        name: "穴子料理 柊 (Hiiragi 本店)",
+                        desc: "類型：星鰻料理 (均價 ￥2,000 - ￥3,500)\n特色: 姬路名物星鰻專賣店，提供星鰻蓋飯、星鰻天婦羅，肉質細嫩綿密。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "おden食堂 (Himeji Oden)",
+                        desc: "類型：姬路關東煮 (均價 ￥1,000 - ￥1,500)\n特色：沾特製薑汁醬油食用的姬路黑關東煮，別有一番在地風味。"
+                    },
+                    {
+                        type: "lunch",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "とんかつ 赤坂 (Akasaka)",
+                        desc: "類型：日式炸豬排 (均價 ￥1,200 - ￥2,000)\n特色：姬路城附近的排隊老字號，炸豬排定食酥脆扎實，高人氣。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "主選晚餐 (神戶)",
+                        isPrimary: true,
+                        name: "炭火焼肉 La Shomon",
+                        desc: "類型：神戶牛燒肉 (均價 ￥4,000 - ￥6,000)\n特色：精選神戶牛及黑毛和牛，炭火燒肉香氣迷人 (注意：因看夜景下山較晚，若時間緊湊可改在三宮站前享用拉麵或烤串)。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 1",
+                        isPrimary: false,
+                        name: "神戶牛らーめん 八坐和 (Yazawa 三宮店)",
+                        desc: "類型：神戶牛拉麵 (均價 ￥1,000 - ￥1,500)\n特色：使用神戶牛骨慢火熬製的奢華黃金湯頭，營業至深夜，非常適合夜景後享用。"
+                    },
+                    {
+                        type: "dinner",
+                        badge: "備選 2",
+                        isPrimary: false,
+                        name: "鳥貴族 (三宮店)",
+                        desc: "類型：連鎖平價居酒屋 (均價 ￥2,000 - ￥3,000)\n特色：日本極受歡迎的均一價烤雞肉串居酒屋，大杯生啤酒配烤串，實惠過癮。"
+                    }
+                ],
+                transit: "1. 三宮 ↔ 姬路 ↔ 舞子 ↔ 三宮：搭乘【JR新快速/普通】 (持關西廣域周遊券免費，價值約 ￥1,980)。\n2. 自費項目：市公車 18 路單程 ￥210；摩耶山纜車往返 ￥1,800。"
+            },
+            {
+                date: "07/24",
+                dayOfWeek: "星期五",
+                hotel: "臨空城飯店",
+                hotelAddress: "〒598-0048 大阪府泉佐野市りんくう往来北1-833",
+                hotelTel: "N/A",
+                hotelMapUrl: "https://maps.google.com/?q=598-0048+Osaka+Rinku+Town",
+                summary: "上午神戶動物王國 ➔ 下午前往臨空城 Outlet 瘋狂採購",
+                timeline: [
+                    { time: "09:30", title: "上午景點推薦", desc: "推薦 1：神戶動物王國 (超人氣親子景點，可近距離撫摸水豚、餵食小動物)。\n推薦 2：北野異人館街補漏景點。" },
+                    { time: "13:00", title: "搭 JR 前往臨空城", desc: "JR三宮站 ➔ 臨空城站 (持周遊券免費，搭乘 JR 快速列車約1.5小時，￥1,510)。" },
+                    { time: "14:40", title: "飯店寄放行李，前往 Outlet", desc: "入住臨空城飯店，隨後步行前往 Rinku Premium Outlets。" },
+                    { time: "15:00", title: "臨空城 Outlet 購物", desc: "瘋狂採購品牌服飾、運動鞋、名牌包，園區內設有大量美食餐廳可供晚餐。" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "餐飲推薦",
+                        isPrimary: true,
+                        name: "臨空城 Outlet 美食廣場 / 餐廳區",
+                        desc: "特色：包含壽司、章魚燒、日式洋食、漢堡等多樣化選擇，方便採購時用餐。"
+                    }
+                ],
+                transit: "1. 三宮 ➔ 臨空城：搭乘【JR快速】 (持關西廣域周遊券免費，車資 ￥1,510)。\n2. 臨空城步行前往 Outlet 及飯店。"
+            },
+            {
+                date: "07/25",
+                dayOfWeek: "星期六",
+                hotel: "回家",
+                hotelAddress: "關西國際機場 (KIX) 航廈 T2",
+                hotelTel: "N/A",
+                hotelMapUrl: "https://maps.google.com/?q=Kansai+International+Airport",
+                summary: "啟程返家 ➔ 臨空城搭 JR 到關西機場 ➔ 樂桃航空回高雄",
+                timeline: [
+                    { time: "08:00", title: "搭 JR 前往關西機場", desc: "臨空城站 ➔ 關西機場站 (搭乘 JR 一站直達，持周遊券免費，￥380)。" },
+                    { time: "08:20", title: "樂桃航空辦理 Check-in", desc: "抵達機場航廈 T2，辦理行李託運與登機手續。" },
+                    { time: "10:50", title: "搭乘樂桃航空 MM31 返台", desc: "起飛返回高雄小港機場，圓滿結束神戶、岡山、京都 11 日之旅！" }
+                ],
+                food: [
+                    {
+                        type: "lunch",
+                        badge: "機場餐飲",
+                        isPrimary: true,
+                        name: "關西機場 T2 餐廳 / 伴手禮店",
+                        desc: "特色：可在登機前最後採購伴手禮，或在免稅店用餐。"
+                    }
+                ],
+                transit: "1. 臨空城 ➔ 關西機場：搭乘【JR】 (持關西廣域周遊券免費，單程 ￥380)。\n2. 樂桃航空 MM31 返回高雄。"
+            }
+        ];
+
+        // Kurama 14 Spots Cultural Guide Data
+        const kuramaGuideData = [
+            { id: 1, name: "鞍馬站 & 大天狗", img1: "Kurama_Photos/spot_1_1.jpg", img2: "Kurama_Photos/spot_1_2.JPG", history: "叡山電車的終點站。鞍馬山自古被認為是神靈與天狗棲息的聖山，而鞍馬天狗之王「僧正坊」在此統領群魔。傳說日本平安時代末期的悲劇將領源義經（幼名牛若丸）幼年時被寄養於鞍馬寺，夜間在此跟隨天狗學習劍術與兵法。", significance: "走出車站即可看到醒目的巨大紅色大天狗面具，是當地最地標性的景點。天狗在日式信仰中代表著深山自然力量的神格化，在此開啟您的聖山之旅。" },
+            { id: 2, name: "仁王門", img1: "Kurama_Photos/spot_2_1.jpg", img2: "Kurama_Photos/spot_2_2.jpg", history: "鞍馬寺的門戶與淨土入口，始建於西元12世紀，現存結構為1911年重建。門內兩側安置著湛慶（鐮倉時代著名雕刻家）風格的二王尊像（金剛力士），威風凜凜，用以驅逐企圖闖入山中聖域的妖魔邪靈。", significance: "這裡是景界與凡塵的分界線。在此處需支付 ￥500 的「愛山費」（入山清潔維護費），跨入此門代表您正式進入鞍馬山的神聖結界。" },
+            { id: 3, name: "普明殿", img1: "Kurama_Photos/spot_3_1.jpg", img2: "Kurama_Photos/spot_3_2.jpg", history: "位於仁王門後方的殿堂。殿內除了祀奉毘沙門天王神像外，同時也是鞍馬山鋼索鐵道（登山纜車）的起點站（山門站）。", significance: "如果計畫搭乘纜車以保存體力，請在此處購票。纜車車廂以源義經的幼名命名為「牛若號」。" },
+            { id: 4, name: "由岐神社", img1: "Kurama_Photos/spot_4_1.jpg", img2: "Kurama_Photos/spot_4_2.JPG", history: "創建於西元940年。當時都城地震頻傳、平將門之亂爆發，朱雀天皇勅令將原本供奉於御所內的「由岐大明神」遷宮至鞍馬山，建立北方的守護屏障。這也是每年10月22日京都三大奇祭之一「鞍馬火祭」的發源地。", significance: "【特別提醒：若搭乘纜車將繞過此處】。神社以極具特色的「割拝殿」（中央有通道的拜殿，為國家重要文化財）以及樹齡高達800年、高聳入雲的巨型「御神木大杉」聞名，散發與自然和諧的原始力量。" },
+            { id: 5, name: "鞍馬山纜車", img1: "Kurama_Photos/spot_5_1.jpg", img2: "Kurama_Photos/spot_5_2.jpg", history: "於1957年開通。這是日本唯一由宗教法人（鞍馬寺）直接營運的私營登山纜車，全長僅207公尺，也是全日本最短的收費鐵路。", significance: "興建的初衷是為了方便行動不便的參拜者上山。搭乘時支付的 ￥200 被視為對寺方的「寄付金」（捐獻），而非普通車資，是極為獨特的鐵道體驗。" },
+            { id: 6, name: "多寶塔", img1: "Kurama_Photos/spot_6_1.JPG", img2: "Kurama_Photos/spot_6_2.JPG", history: "位於纜車終點站（多寶塔站）旁。這座多寶塔於1960年重建，象徵著大乘佛教經典中多寶如來現身說法的「寶塔湧現」宏偉意境。", significance: "被蔥鬱林木環繞的朱紅色多寶塔十分典雅，是從纜車出站後迎面而來的第一座莊嚴地標。在此可調整呼吸，開始走向本殿金堂。" },
+            { id: 7, name: "本殿金堂 & 金剛床", img1: "Kurama_Photos/spot_7_1.jpg", img2: "Kurama_Photos/spot_7_2.jpg", history: "鞍馬寺的主殿，供奉著三位一體的「尊天」神祇（代表月亮與慈悲的千手觀世音菩薩、代表太陽與光明的毘沙門天王、代表大地與生命力的護法魔王尊）。大殿正前方的石板地中央，嵌有象徵宇宙中心與能量交匯的三角形與星芒圖案——「金剛床」。", significance: "這是京都最強大的「能量景點（Power Spot）」。遊客通常會在本殿前的金剛床中心排隊，雙腳站在星芒中心，雙手合十向大山與天空祈禱，感受與宇宙能量連結的神秘體驗。" },
+            { id: 8, name: "靈寶殿", img1: "Kurama_Photos/spot_8_1.jpg", img2: "Kurama_Photos/spot_8_2.JPG", history: "位於本殿後方幽深的山林步道旁，是一座三層樓的鞍馬山專題博物館。館內一樓為自然科學展示室，二、三樓則為佛教文物與藝術珍藏室。", significance: "館內收藏了多尊平安時代的佛像，其中最著名的是被列為日本國寶的「木造毘沙門天立像」及吉祥天女像。此外，也展示了鞍馬山獨特的地質礦物與豐富的動植物生態。" },
+            { id: 9, name: "木之根道", img1: "Kurama_Photos/spot_9_1.jpg", img2: "Kurama_Photos/spot_9_2.JPEG", history: "通往奧之院步道中最著名的自然奇觀。由於鞍馬山的地質是由硬度極高的珪質角岩（Chert）構成，且表土層極薄，樹木的根部無法向下扎深，被迫像青筋般緊貼並浮出岩石表面生長。傳說牛若丸（源義經）就是利用這些起伏的樹根練習輕功和跳躍步伐。", significance: "樹根在地面上盤根交錯，形成極具魔幻與神秘感的森林景觀。由於地質脆弱，在此步行時請特別小心腳下，並儘量避免踩踏暴露的樹根以保護大樹。" },
+            { id: 10, name: "大杉權現社", img1: "Kurama_Photos/spot_10_1.jpg", img2: "Kurama_Photos/spot_10_2.jpg", history: "位於木之根道旁，祭祀著山中一棵存活已久的巨型神木「大杉樣」（被信徒視為護法魔王尊的化身）。雖然該神木在過去遭颱風摧毀，但此處至今仍是神聖的信仰中心。", significance: "這裡被稱為「大杉苑瞑想道場」，是一處極為幽靜、空靈的原始森林區域，常有修行者或尋求靈性體驗的人在此閉目冥想，感受森林的治癒能量。" },
+            { id: 11, name: "僧正谷不動堂", img1: "Kurama_Photos/spot_11_1.jpg", img2: "Kurama_Photos/spot_11_2.jpg", history: "深藏於茂密杉林山谷中的小堂，堂內供奉著傳說由傳教大師（最澄）親自雕刻的不動明王像。此處是日本謠曲《鞍馬天狗》中，牛若丸與天狗頭目相遇、在月光下苦練劍術的傳奇舞台。", significance: "隱沒在深林山谷中的小木堂，籠罩在寂靜與神秘的氛圍中。不動明王代表著荒野中的智慧與斬斷魔障的決心，是洗滌心靈的平靜站點。" },
+            { id: 12, name: "義經堂", img1: "Kurama_Photos/spot_12_1.jpg", img2: "Kurama_Photos/spot_12_2.jpg", history: "鄰近不動堂，主祀被尊奉為「遮那王尊」的源義經。傳說源義經在東北平泉非命戰死後，其英魂不滅，跨越山海回到了童年修行地鞍馬山，並在此化為守護神，協助護法魔王尊守護這片聖域。", significance: "這是一座外觀簡樸、靜立於深山裡的黑色木造小堂。對於熟悉日本歷史上源義經悲劇故事的人來說，這裡是追悼與憑弔這位悲劇英雄英魂的靈性場所。" },
+            { id: 13, name: "奧之院魔王殿", img1: "Kurama_Photos/spot_13_1.jpg", img2: "Kurama_Photos/spot_13_2.jpg", history: "鞍馬山最神聖且帶有神秘色彩的終極禁域。根據寺方文獻，在距今約650萬年前，象徵大地與大自然萬物元氣的「護法魔王尊」帶著金星的拯救使命，在此降臨地球。該殿便建立於陡峭的石灰岩壁之上。", significance: "這是整座山林中能量氣場最為森嚴、神秘的地點。殿宇四周巨木參天、古老的磐座錯落，散發出令人心安的靈氣與神秘氛圍。過此殿後，山路開始向下延伸往貴船。" },
+            { id: 14, name: "西門", img1: "Kurama_Photos/spot_14_1.jpg", img2: "Kurama_Photos/spot_14_2.jpg", history: "鞍馬山登山步道的西側終點大門。跨出大門並走過橫跨川流的木橋後，迎面而來的便是潺潺流淌的貴船川。", significance: "跨出此門即代表您完成了從鞍馬至貴船的聖山橫跨健行。出大門後右轉步行約 5 分鐘，即可看到著名的貴船神社，以及夏日限定、架設在清涼溪流上的「川床」餐廳區。" }
+        ];
+
+        let currentDayIndex = 0; // Starts with 07/15 (Day 1)
+
+        // Initialize App
+        function initApp() {
+            renderDayButtons();
+            loadDay(0);
+            renderKuramaGuide();
+        }
+
+        // Render Day buttons in top selector
+        function renderDayButtons() {
+            const container = document.getElementById("day-buttons-container");
+            container.innerHTML = "";
+            itineraryData.forEach((day, index) => {
+                const button = document.createElement("button");
+                button.className = `day-btn ${index === currentDayIndex ? 'active' : ''}`;
+                button.setAttribute("onclick", `selectDay(${index})`);
+                button.innerHTML = `${day.date} <span>${day.dayOfWeek.replace("星期", "週")}</span>`;
+                container.appendChild(button);
+            });
+        }
+
+        // Select Day
+        function selectDay(index) {
+            currentDayIndex = index;
+            renderDayButtons();
+            loadDay(index);
+            
+            // Auto scroll active day button into view
+            const container = document.getElementById("day-buttons-container");
+            const activeBtn = container.children[index];
+            container.parentElement.scrollTo({
+                left: activeBtn.offsetLeft - container.parentElement.offsetWidth / 2 + activeBtn.offsetWidth / 2,
+                behavior: 'smooth'
+            });
+        }
+
+        // Load Day data
+        function loadDay(index) {
+            const data = itineraryData[index];
+            
+            // 1. Update Header date
+            document.getElementById("header-date").innerText = `${data.date} (${data.dayOfWeek})`;
+
+            // 2. Load summary
+            document.getElementById("day-itinerary-summary").innerText = data.summary;
+
+            // 3. Load timeline
+            const timelineContainer = document.getElementById("day-timeline-container");
+            timelineContainer.innerHTML = "";
+            
+            data.timeline.forEach(item => {
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "timeline-item";
+                
+                // Choose icon based on activity description keywords
+                let iconClass = "fa-solid fa-circle-dot";
+                const desc = item.title.toLowerCase();
+                if (desc.includes("機") || desc.includes("飛行") || desc.includes("航空")) iconClass = "fa-solid fa-plane";
+                else if (desc.includes("南海") || desc.includes("特急") || desc.includes("電車") || desc.includes("地鐵") || desc.includes("列車")) iconClass = "fa-solid fa-train";
+                else if (desc.includes("飯店") || desc.includes("check") || desc.includes("住宿") || desc.includes("退房")) iconClass = "fa-solid fa-hotel";
+                else if (desc.includes("餐") || desc.includes("吃") || desc.includes("小吃")) iconClass = "fa-solid fa-utensils";
+                else if (desc.includes("購") || desc.includes("採") || desc.includes("逛") || desc.includes("uniqlo") || desc.includes("muji") || desc.includes("gu")) iconClass = "fa-solid fa-bag-shopping";
+                else if (desc.includes("玩") || desc.includes("公園") || desc.includes("園地") || desc.includes("神社") || desc.includes("寺")) iconClass = "fa-solid fa-location-dot";
+                
+                itemDiv.innerHTML = `
+                    <div class="timeline-time">${item.time}</div>
+                    <div class="timeline-body">
+                        <div class="timeline-event-title"><i class="${iconClass}" style="margin-right: 6px; color: var(--primary-crimson);"></i>${item.title}</div>
+                        <div class="timeline-event-desc">${item.desc}</div>
+                    </div>
+                `;
+                timelineContainer.appendChild(itemDiv);
+            });
+
+            // 4. Load Food recommendations
+            const foodContainer = document.getElementById("day-food-container");
+            foodContainer.innerHTML = "";
+            if (data.food && data.food.length > 0) {
+                // Group food by category (lunch/dinner)
+                const lunches = data.food.filter(f => f.type === "lunch" || f.type.includes("午餐") || f.type.includes("美食"));
+                const dinners = data.food.filter(f => f.type === "dinner" || f.type.includes("晚餐"));
+                
+                if (lunches.length > 0) {
+                    const sectionTitle = document.createElement("div");
+                    sectionTitle.className = "food-section-title";
+                    sectionTitle.innerText = "🍱 午餐推薦";
+                    foodContainer.appendChild(sectionTitle);
+                    
+                    lunches.forEach(item => {
+                        const fCard = document.createElement("div");
+                        fCard.className = `food-card ${item.isPrimary ? 'primary' : ''}`;
+                        fCard.innerHTML = `
+                            <div class="food-badge">${item.badge}</div>
+                            <div class="food-name">${item.name}</div>
+                            <div class="food-details">${item.desc}</div>
+                        `;
+                        foodContainer.appendChild(fCard);
+                    });
+                }
+                
+                if (dinners.length > 0) {
+                    const sectionTitle = document.createElement("div");
+                    sectionTitle.className = "food-section-title";
+                    sectionTitle.innerText = "🥢 晚餐推薦";
+                    foodContainer.appendChild(sectionTitle);
+                    
+                    dinners.forEach(item => {
+                        const fCard = document.createElement("div");
+                        fCard.className = `food-card ${item.isPrimary ? 'primary' : ''}`;
+                        fCard.innerHTML = `
+                            <div class="food-badge">${item.badge}</div>
+                            <div class="food-name">${item.name}</div>
+                            <div class="food-details">${item.desc}</div>
+                        `;
+                        foodContainer.appendChild(fCard);
+                    });
+                }
+            } else {
+                foodContainer.innerHTML = `
+                    <div class="card" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                        <i class="fa-solid fa-circle-info" style="font-size: 24px; margin-bottom: 8px; display: block;"></i>
+                        今日無特定餐廳安排，建議於景點周邊或美食街自由用餐。
+                    </div>
+                `;
+            }
+
+            // 5. Load Transit
+            document.getElementById("day-transit-container").innerText = data.transit;
+
+            // 6. Update Bottom Hotel Bar
+            const hotelBar = document.getElementById("bottom-hotel-bar");
+            const hotelNameText = document.getElementById("bottom-hotel-name-text");
+            const barLabel = document.getElementById("bottom-bar-label");
+            
+            if (data.hotel === "回家") {
+                barLabel.innerText = "今日返台";
+                hotelNameText.innerText = "搭機返家 ✈️";
+                hotelBar.setAttribute("href", "#");
+                hotelBar.style.display = "flex";
+            } else {
+                barLabel.innerText = "今日住宿";
+                hotelNameText.innerText = data.hotel;
+                hotelBar.setAttribute("href", data.hotelMapUrl);
+                hotelBar.style.display = "flex";
+            }
+        }
+
+        // Render Kurama 14 Spots cultural guide list
+        function renderKuramaGuide() {
+            const container = document.getElementById("kurama-guide-container");
+            container.innerHTML = "";
+            kuramaGuideData.forEach(spot => {
+                const sCard = document.createElement("div");
+                sCard.className = "kurama-spot-card";
+                sCard.innerHTML = `
+                    <div class="kurama-spot-header">
+                        <div class="kurama-spot-number">${spot.id}</div>
+                        <div class="kurama-spot-title">${spot.name}</div>
+                    </div>
+                    <div class="kurama-spot-body">
+                        <div class="kurama-spot-desc history">
+                            <h4><i class="fa-solid fa-hourglass-start"></i> 歷史由來與傳說</h4>
+                            ${spot.history}
+                        </div>
+                        <div class="kurama-spot-desc">
+                            <h4><i class="fa-solid fa-circle-info"></i> 文化意義與參觀重點</h4>
+                            ${spot.significance}
+                        </div>
+                        <div class="kurama-spot-gallery">
+                            <div class="kurama-img-wrapper">
+                                <img src="${spot.img1}" class="kurama-img" alt="${spot.name} 實景 1" onerror="this.src='https://placehold.co/200x150?text=No+Photo'">
+                            </div>
+                            <div class="kurama-img-wrapper">
+                                <img src="${spot.img2}" class="kurama-img" alt="${spot.name} 實景 2" onerror="this.src='https://placehold.co/200x150?text=No+Photo'">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(sCard);
+            });
+        }
+
+        // Switch Tabs Menu
+        function switchTab(tabId) {
+            // Update active state of tab buttons
+            const tabButtons = document.querySelectorAll(".tab-btn");
+            tabButtons.forEach(btn => {
+                btn.classList.remove("active");
+                if (btn.getAttribute("onclick").includes(tabId)) {
+                    btn.classList.add("active");
+                }
+            });
+
+            // Update active panel display
+            const panels = document.querySelectorAll(".content-panel");
+            panels.forEach(panel => {
+                panel.classList.remove("active");
+            });
+            document.getElementById(`panel-${tabId}`).classList.add("active");
+
+            // Hide bottom floating hotel bar if on Kurama or Pass tabs to prevent clutter
+            const hotelBar = document.getElementById("bottom-hotel-bar");
+            if (tabId === 'kurama' || tabId === 'pass') {
+                hotelBar.style.display = "none";
+            } else {
+                // Re-evaluate based on active day
+                loadDay(currentDayIndex);
+            }
+        }
+
+        // Initialize on load
+        window.onload = initApp;
+    </script>
+</body>
+</html>

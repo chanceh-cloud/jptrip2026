@@ -1,0 +1,10 @@
+# Ignore Excel spreadsheets and temporary files
+*.xlsx
+*.csv
+*.docx
+~$*
+
+# Ignore backups and template files
+行程 - 複製.xlsx
+行程_backup.xlsx
+手機版行程範本.html
