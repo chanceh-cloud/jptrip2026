@@ -44,7 +44,7 @@
             justify-content: center;
             min-height: 100vh;
             overflow: hidden; /* Lock viewport for app feel */
-            font-size: 20px; /* Base font size scaled up (Level 3) */
+            font-size: 18px; /* Base font size scaled up (Level 2) */
         }
 
         /* Mobile App Container */
@@ -164,8 +164,8 @@
             flex: 1;
             background: none;
             border: none;
-            padding: 10px 0; /* Comfortable tab padding */
-            font-size: 18px; /* Larger tab font size */
+            padding: 10px 2px; /* Reduce horizontal padding */
+            font-size: 15px; /* Tab font size (Level 2) */
             font-weight: 500;
             color: var(--text-muted);
             cursor: pointer;
@@ -175,10 +175,11 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
+            white-space: nowrap; /* Keep text in a single line */
         }
 
         .tab-btn i {
-            font-size: 24px; /* Larger icons */
+            font-size: 22px; /* Tab icon size (Level 2) */
         }
 
         .tab-btn.active {
@@ -221,7 +222,7 @@
         }
 
         .card-title {
-            font-size: 22px; /* Larger card title */
+            font-size: 20px; /* Card title (Level 2) */
             font-weight: 700;
             margin: 0 0 12px 0;
             display: flex;
@@ -272,17 +273,17 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
             color: var(--primary-crimson);
-            font-size: 19px; /* Larger time font */
+            font-size: 17px; /* Time font (Level 2) */
             margin-bottom: 4px;
         }
 
         .timeline-body {
-            font-size: 20px; /* Larger body font size */
+            font-size: 18px; /* Body font size (Level 2) */
             line-height: 1.6;
         }
 
         .timeline-event-title {
-            font-size: 22px; /* Larger event title */
+            font-size: 20px; /* Event title (Level 2) */
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 4px;
@@ -293,13 +294,13 @@
 
         .timeline-event-desc {
             color: var(--text-muted);
-            font-size: 19px; /* Larger event description */
+            font-size: 17px; /* Event description (Level 2) */
             white-space: pre-line;
         }
 
         /* Restaurant Cards */
         .food-section-title {
-            font-size: 19px; /* Larger food section title */
+            font-size: 17px; /* Food section title (Level 2) */
             font-weight: 700;
             color: var(--primary-crimson);
             text-transform: uppercase;
@@ -328,7 +329,7 @@
         .food-badge {
             background-color: var(--text-muted);
             color: white;
-            font-size: 16px; /* Larger badge font */
+            font-size: 14px; /* Badge font (Level 2) */
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 700;
@@ -342,7 +343,7 @@
         }
 
         .food-name {
-            font-size: 22px; /* Larger restaurant name */
+            font-size: 20px; /* Restaurant name (Level 2) */
             font-weight: 700;
             color: var(--text-main);
             margin: 0 0 6px 0;
@@ -351,7 +352,7 @@
         }
 
         .food-details {
-            font-size: 19px; /* Larger restaurant details */
+            font-size: 17px; /* Restaurant details (Level 2) */
             color: var(--text-muted);
             line-height: 1.5;
             white-space: pre-line;
@@ -359,7 +360,7 @@
 
         /* Transit & Pass details styling */
         .transit-desc {
-            font-size: 20px; /* Larger transit description */
+            font-size: 18px; /* Transit description (Level 2) */
             line-height: 1.6;
             color: var(--text-main);
             white-space: pre-line;
@@ -368,7 +369,7 @@
         .pass-badge {
             background: linear-gradient(135deg, #023e8a 0%, #0077b6 100%); /* Ocean gradient badge */
             color: white;
-            font-size: 17px; /* Larger pass badge */
+            font-size: 15px; /* Pass badge (Level 2) */
             font-weight: 700;
             padding: 4px 8px;
             border-radius: 6px;
@@ -404,18 +405,18 @@
         .kurama-spot-number {
             background-color: var(--accent-gold);
             color: var(--primary-dark);
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .kurama-spot-title {
-            font-size: 22px; /* Larger spot title */
+            font-size: 20px; /* Spot title (Level 2) */
             font-weight: 700;
             flex-grow: 1;
             margin-left: 12px;
@@ -426,7 +427,7 @@
         }
 
         .kurama-spot-desc {
-            font-size: 19px; /* Larger spot description */
+            font-size: 17px; /* Spot description (Level 2) */
             line-height: 1.6;
             margin-bottom: 12px;
         }
@@ -439,7 +440,7 @@
 
         .kurama-spot-desc h4 {
             margin: 0 0 6px 0;
-            font-size: 18px; /* Larger section subheaders */
+            font-size: 16px; /* Section subheaders (Level 2) */
             color: var(--primary-crimson);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -478,7 +479,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 8px;
-            font-size: 18px; /* Larger table text */
+            font-size: 16px; /* Table text (Level 2) */
         }
 
         .savings-table th, .savings-table td {
@@ -557,7 +558,7 @@
                     <div class="card-title">
                         <i class="fa-solid fa-route"></i> 今日路線概述
                     </div>
-                    <div id="day-itinerary-summary" style="font-size: 19px; line-height: 1.5; color: var(--text-main);">
+                    <div id="day-itinerary-summary" style="font-size: 17px; line-height: 1.5; color: var(--text-main);">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
@@ -569,10 +570,10 @@
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="flex-grow: 1;">
-                            <div id="day-hotel-name" style="font-size: 22px; font-weight: 700; color: var(--text-main);"></div>
-                            <div id="day-hotel-address" style="font-size: 18px; color: var(--text-muted); margin-top: 4px;"></div>
+                            <div id="day-hotel-name" style="font-size: 20px; font-weight: 700; color: var(--text-main);"></div>
+                            <div id="day-hotel-address" style="font-size: 16px; color: var(--text-muted); margin-top: 4px;"></div>
                         </div>
-                        <a id="day-hotel-map" href="#" target="_blank" style="color: #E63946; font-size: 28px; padding: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                        <a id="day-hotel-map" href="#" target="_blank" style="color: #E63946; font-size: 26px; padding: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                             <i class="fa-solid fa-map-pin"></i>
                         </a>
                     </div>
@@ -610,8 +611,8 @@
             <!-- 4. Kurama Guide Tab -->
             <div id="panel-kurama" class="content-panel">
                 <div class="card" style="margin-bottom: 12px; background: linear-gradient(135deg, #1b3a24 0%, #2e5c38 100%); color: white; border: none;">
-                    <h3 style="margin: 0 0 6px 0; font-size: 22px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
-                    <p style="margin: 0; font-size: 18px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
+                    <h3 style="margin: 0 0 6px 0; font-size: 20px; color: var(--accent-gold);"><i class="fa-solid fa-tree"></i> 鞍馬山古道文化導覽</h3>
+                    <p style="margin: 0; font-size: 16px; opacity: 0.9; line-height: 1.5;">7/20 鞍馬山健行步道（鞍馬站 ➔ 貴船西門出口）沿途 14 個必經歷史文化景點導覽，附上對照實景照片，助您順利辨識。</p>
                 </div>
                 <div class="kurama-container" id="kurama-guide-container">
                     <!-- Loaded dynamically from JSON config -->
@@ -624,11 +625,11 @@
                     <div class="card-title">
                         <i class="fa-solid fa-ticket-simple"></i> 關西廣域鐵路周遊券 (5日 ￥12,000)
                     </div>
-                    <p style="font-size: 19px; line-height: 1.6; margin: 0 0 16px 0;">
+                    <p style="font-size: 17px; line-height: 1.6; margin: 0 0 16px 0;">
                         本行程後半段（07/21 - 07/25）啟用 5 日關西廣域周遊券。以下為五人家庭旅遊的超划算省錢試算與乘車攻略。
                     </p>
                     
-                    <h4 style="font-size: 19px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
+                    <h4 style="font-size: 17px; margin: 16px 0 8px; color: var(--primary-crimson);">💰 單人車資省錢明細 (日元)</h4>
                     <table class="savings-table">
                         <thead>
                             <tr>
@@ -678,7 +679,7 @@
                         </tbody>
                     </table>
                     
-                    <div style="background-color: rgba(46, 125, 50, 0.05); border-left: 3px solid #2E7D32; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 18px; line-height: 1.5;">
+                    <div style="background-color: rgba(46, 125, 50, 0.05); border-left: 3px solid #2E7D32; padding: 12px; margin-top: 14px; border-radius: 4px; font-size: 16.5px; line-height: 1.5;">
                         <i class="fa-solid fa-calculator" style="color: #2E7D32; margin-right: 6px;"></i>
                         <strong>全家五人省錢總額：</strong><br>
                         單人省下 ￥6,300，全家五人省下總額高達 <strong>￥31,500</strong>！
@@ -689,7 +690,7 @@
                     <div class="card-title">
                         <i class="fa-solid fa-circle-info"></i> 周遊券乘車攻略
                     </div>
-                    <div style="font-size: 19px; line-height: 1.6; color: var(--text-main);">
+                    <div style="font-size: 17px; line-height: 1.6; color: var(--text-main);">
                         <strong>1. 啟用區間：</strong><br>
                         建議設定在 <strong>07/21 (二) ~ 07/25 (六)</strong>，完整覆蓋神戶、姬路、岡山、倉敷及前往關西機場的所有長途車程。<br><br>
                         <strong>2. 指定席預約：</strong><br>
