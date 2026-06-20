@@ -2,23 +2,29 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>神戶・岡山・京都日本之旅 2026</title>
+    <!-- iOS Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="日本旅遊2026">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-crimson: #8B0000;
-            --primary-dark: #4a0000;
-            --accent-gold: #D4AF37;
-            --bg-color: #F8F9FA;
+            --primary-crimson: #0077B6; /* Vibrant Ocean Blue */
+            --primary-dark: #03045E;    /* Deep Navy */
+            --accent-gold: #FFB703;     /* Warm Sunset Yellow */
+            --bg-color: #F4F8FA;        /* Fresh Sky/Ocean Tint */
             --card-bg: #FFFFFF;
-            --text-main: #2D3748;
-            --text-muted: #718096;
+            --text-main: #1D2D44;       /* Dark Navy Slate */
+            --text-muted: #64748B;
             --border-color: #E2E8F0;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 6px rgba(3, 4, 94, 0.04), 0 1px 3px rgba(3, 4, 94, 0.08);
             --transition: all 0.3s ease;
         }
 
@@ -32,11 +38,12 @@
             margin: 0;
             padding: 0;
             font-family: 'Noto Sans TC', 'Outfit', sans-serif;
-            background-color: #D6DCE5; /* Desktop background wrapper */
+            background-color: #E6F0FA; /* Beach sky blue */
             color: var(--text-main);
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            overflow: hidden; /* Lock viewport for app feel */
         }
 
         /* Mobile App Container */
@@ -44,63 +51,62 @@
             width: 100%;
             max-width: 480px; /* Simulates mobile on desktop */
             background-color: var(--bg-color);
-            min-height: 100vh;
+            height: 100vh; /* Locked height for app feel */
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-            padding-bottom: 90px; /* Space for sticky bottom nav */
+            box-shadow: 0 0 30px rgba(3, 4, 94, 0.15);
+            overflow: hidden;
         }
 
         /* Header section */
         .app-header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-crimson) 100%);
             color: white;
-            padding: 24px 20px 20px;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
-            position: sticky;
-            top: 0;
+            padding: 10px 16px 8px; /* Slimmed down height by 50% */
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            flex-shrink: 0; /* Header stays fixed at top */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             z-index: 10;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-top {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
         .header-logo {
-            font-size: 28px;
+            font-size: 20px; /* Smaller logo */
             color: var(--accent-gold);
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-3px); }
             100% { transform: translateY(0px); }
         }
 
         .header-title-box h1 {
-            font-size: 19px;
+            font-size: 15px; /* Compact title size */
             font-weight: 700;
-            margin: 0 0 4px 0;
+            margin: 0 0 2px 0;
             letter-spacing: 0.5px;
         }
 
         .header-title-box p {
-            font-size: 12px;
+            font-size: 10px; /* Smaller subtitle */
             margin: 0;
             opacity: 0.85;
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         /* Horizontal Day Selector */
         .day-selector-wrapper {
-            margin-top: 16px;
+            margin-top: 6px; /* Compact margin */
             overflow-x: auto;
             scrollbar-width: none; /* Firefox */
         }
@@ -111,18 +117,18 @@
 
         .day-selector {
             display: flex;
-            gap: 8px;
-            padding: 4px 0;
+            gap: 6px;
+            padding: 2px 0;
         }
 
         .day-btn {
             flex-shrink: 0;
             background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 12px;
+            padding: 4px 8px; /* Slimmer buttons */
+            border-radius: 8px;
+            font-size: 11px;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
@@ -132,15 +138,15 @@
             background-color: var(--accent-gold);
             color: var(--primary-dark);
             font-weight: 700;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 2px 6px rgba(255, 183, 3, 0.3);
             border-color: var(--accent-gold);
         }
 
         .day-btn span {
             display: block;
-            font-size: 9px;
-            opacity: 0.7;
-            margin-top: 2px;
+            font-size: 8px;
+            opacity: 0.8;
+            margin-top: 1px;
         }
 
         /* Navigation Menu Tabs */
@@ -148,17 +154,17 @@
             display: flex;
             background: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 103px;
+            flex-shrink: 0; /* Tabs bar stays fixed below header */
             z-index: 9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         }
 
         .tab-btn {
             flex: 1;
             background: none;
             border: none;
-            padding: 12px 0;
-            font-size: 13px;
+            padding: 8px 0; /* Slimmer tab padding */
+            font-size: 12px;
             font-weight: 500;
             color: var(--text-muted);
             cursor: pointer;
@@ -167,11 +173,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
         }
 
         .tab-btn i {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .tab-btn.active {
@@ -184,6 +190,9 @@
         .app-content {
             padding: 16px;
             flex-grow: 1;
+            overflow-y: auto; /* Content area scrolls independently */
+            padding-bottom: 96px; /* Spacing for bottom floating bar */
+            -webkit-overflow-scrolling: touch;
         }
 
         .content-panel {
@@ -291,7 +300,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin: 20px 0 10px;
-            background: rgba(139, 0, 0, 0.05);
+            background: rgba(0, 119, 182, 0.08); /* Soft blue tint */
             padding: 6px 12px;
             border-radius: 6px;
             display: inline-block;
@@ -350,7 +359,7 @@
         }
 
         .pass-badge {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #023e8a 0%, #0077b6 100%); /* Ocean gradient badge */
             color: white;
             font-size: 11px;
             font-weight: 700;
@@ -364,18 +373,17 @@
 
         /* Bottom Floating Bar */
         .bottom-nav {
-            position: fixed;
+            position: absolute; /* Fixed relative to mobile mock container */
             bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 32px);
-            max-width: 448px;
-            background: rgba(74, 0, 0, 0.95);
+            left: 16px;
+            right: 16px;
+            width: auto;
+            background: rgba(3, 4, 94, 0.95); /* Deep navy base */
             backdrop-filter: blur(10px);
             color: white;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(3, 4, 94, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -530,18 +538,18 @@
         }
 
         .savings-table th {
-            background-color: rgba(139, 0, 0, 0.05);
+            background-color: rgba(0, 119, 182, 0.08); /* Soft blue th */
             color: var(--primary-crimson);
             font-weight: 700;
         }
 
         .savings-table tr.total-row {
             font-weight: 700;
-            background-color: rgba(212, 175, 55, 0.1);
+            background-color: rgba(255, 183, 3, 0.1); /* Sandy yellow total row */
         }
 
         .savings-accent {
-            color: green;
+            color: #2E7D32; /* Stronger green for visibility */
             font-weight: 700;
         }
     </style>
@@ -1272,6 +1280,9 @@
                 left: activeBtn.offsetLeft - container.parentElement.offsetWidth / 2 + activeBtn.offsetWidth / 2,
                 behavior: 'smooth'
             });
+
+            // Scroll content panel back to top
+            document.querySelector('.app-content').scrollTop = 0;
         }
 
         // Load Day data
@@ -1437,6 +1448,9 @@
                 panel.classList.remove("active");
             });
             document.getElementById(`panel-${tabId}`).classList.add("active");
+
+            // Scroll content panel back to top
+            document.querySelector('.app-content').scrollTop = 0;
 
             // Hide bottom floating hotel bar if on Kurama or Pass tabs to prevent clutter
             const hotelBar = document.getElementById("bottom-hotel-bar");
