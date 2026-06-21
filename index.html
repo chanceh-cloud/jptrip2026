@@ -43,6 +43,7 @@
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            min-height: 100dvh;
             overflow: hidden; /* Lock viewport for app feel */
             font-size: 18px; /* Base font size scaled up (Level 2) */
         }
@@ -53,6 +54,7 @@
             max-width: 480px; /* Simulates mobile on desktop */
             background-color: var(--bg-color);
             height: 100vh; /* Locked height for app feel */
+            height: 100dvh; /* Dynamic viewport height for mobile browsers */
             display: flex;
             flex-direction: column;
             position: relative;
@@ -193,8 +195,9 @@
             padding: 16px;
             flex-grow: 1;
             overflow-y: auto; /* Content area scrolls independently */
-            padding-bottom: 24px; /* Reduced bottom padding (No bottom hotel bar) */
+            padding-bottom: 100px; /* Leave extra bottom space to ensure iOS scrollability and avoid cut-offs */
             -webkit-overflow-scrolling: touch;
+            min-height: 0; /* Force correct flexbox height containment */
         }
 
         .content-panel {
@@ -1481,6 +1484,26 @@
                 document.getElementById("day-hotel-address").innerText = data.hotelAddress || "";
                 document.getElementById("day-hotel-map").setAttribute("href", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(getSearchQuery(data.hotel)));
             }
+
+            // Refresh scroll height calculations
+            refreshScroll();
+        }
+
+        // Debounced scroll container reflow helper to fix iOS Safari scroll freeze bugs
+        let refreshScrollTimeout = null;
+        function refreshScroll() {
+            const appContent = document.querySelector('.app-content');
+            if (appContent) {
+                appContent.style.overflowY = 'hidden';
+                void appContent.offsetHeight; // trigger reflow
+                if (refreshScrollTimeout) {
+                    clearTimeout(refreshScrollTimeout);
+                }
+                refreshScrollTimeout = setTimeout(() => {
+                    appContent.style.overflowY = 'auto';
+                    refreshScrollTimeout = null;
+                }, 15);
+            }
         }
 
         // Render Kurama 14 Spots cultural guide list
@@ -1543,6 +1566,9 @@
             if (tabId === 'itinerary' || tabId === 'food') {
                 loadDay(currentDayIndex);
             }
+
+            // Force reflow for the new tab view
+            refreshScroll();
         }
 
         // Initialize on load
