@@ -521,12 +521,17 @@
     <div class="app-container">
         <!-- Header -->
         <div class="app-header">
-            <div class="header-top">
-                <i class="fa-solid fa-plane-departure header-logo"></i>
-                <div class="header-title-box">
-                    <h1 id="header-main-title">日本神戶・岡山・京都之旅</h1>
-                    <p><span id="header-date">2026/07/15 - 07/25</span> | <span>五人家庭旅遊</span></p>
+            <div class="header-top" style="justify-content: space-between; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <i class="fa-solid fa-plane-departure header-logo"></i>
+                    <div class="header-title-box">
+                        <h1 id="header-main-title">日本神戶・岡山・京都之旅</h1>
+                        <p><span id="header-date">2026/07/15 - 07/25</span> | <span>五人家庭旅遊</span></p>
+                    </div>
                 </div>
+                <button onclick="window.location.reload(true)" style="background: none; border: none; color: var(--accent-gold); font-size: 18px; padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="同步更新 / 重新整理">
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
             </div>
 
             <!-- Horizontal Day Selector -->
