@@ -725,6 +725,24 @@
         </div>
     </div>
 
+    <!-- PDF Viewer Modal Overlay -->
+    <div id="pdf-viewer-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.9); z-index: 9999; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background-color: #1a1a1a; padding: 12px 16px; color: white; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+            <span style="font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-file-pdf" style="color: #E63946;"></i> 預約確認單</span>
+            <div style="display: flex; gap: 8px;">
+                <a id="pdf-modal-external-link" href="#" target="_blank" style="color: white; background-color: rgba(255,255,255,0.15); text-decoration: none; padding: 8px 12px; border-radius: 6px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 4px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> 外開
+                </a>
+                <button onclick="closePdfModal()" style="background-color: var(--primary-crimson); color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 4px;">
+                    <i class="fa-solid fa-xmark"></i> 關閉
+                </button>
+            </div>
+        </div>
+        <div style="flex-grow: 1; -webkit-overflow-scrolling: touch; overflow-y: auto; background-color: #525659; display: flex; justify-content: center; align-items: center;">
+            <iframe id="pdf-viewer-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+
     <!-- Javascript Logic -->
     <script>
         // Full Itinerary Data in JSON structure
@@ -1536,7 +1554,10 @@
                 // Show or hide Hotel Reservation PDF Confirmation Link
                 const hotelPdf = document.getElementById("day-hotel-pdf");
                 if (data.hotelPdfUrl) {
-                    hotelPdf.setAttribute("href", data.hotelPdfUrl);
+                    hotelPdf.onclick = function(e) {
+                        e.preventDefault();
+                        openPdfModal(data.hotelPdfUrl);
+                    };
                     hotelPdf.style.display = "flex";
                 } else {
                     hotelPdf.style.display = "none";
@@ -1545,6 +1566,31 @@
 
             // Refresh scroll height calculations
             refreshScroll();
+        }
+
+        // PDF Modal helper functions
+        function openPdfModal(url) {
+            const modal = document.getElementById("pdf-viewer-modal");
+            const iframe = document.getElementById("pdf-viewer-iframe");
+            const extLink = document.getElementById("pdf-modal-external-link");
+            
+            iframe.src = url;
+            extLink.setAttribute("href", url);
+            modal.style.display = "flex";
+            
+            // Prevent main page scrolling while modal is open
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePdfModal() {
+            const modal = document.getElementById("pdf-viewer-modal");
+            const iframe = document.getElementById("pdf-viewer-iframe");
+            
+            iframe.src = "";
+            modal.style.display = "none";
+            
+            // Restore main page scrolling
+            document.body.style.overflow = "";
         }
 
         // Debounced scroll container reflow helper to fix iOS Safari scroll freeze bugs
