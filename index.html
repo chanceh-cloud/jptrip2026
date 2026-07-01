@@ -533,7 +533,7 @@
                     <button onclick="window.location.reload(true)" style="background: none; border: none; color: var(--accent-gold); font-size: 18px; padding: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="同步更新 / 重新整理">
                         <i class="fa-solid fa-rotate"></i>
                     </button>
-                    <span style="font-size: 10px; color: var(--accent-gold); opacity: 0.85; font-weight: 700; margin-top: -2px; letter-spacing: 0.5px;">ver 1.0</span>
+                    <span style="font-size: 10px; color: var(--accent-gold); opacity: 0.85; font-weight: 700; margin-top: -2px; letter-spacing: 0.5px;">ver 1.01</span>
                 </div>
             </div>
 
@@ -728,6 +728,24 @@
         </div>
     </div>
 
+    <!-- PDF/Image Viewer Modal Overlay -->
+    <div id="pdf-viewer-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.95); z-index: 9999; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background-color: #1a1a1a; padding: 12px 16px; color: white; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+            <span style="font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-file-invoice" style="color: var(--accent-gold);"></i> 預約確認單
+            </span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 11px; color: #aaa; font-weight: 500;">💡 提示：點擊照片可放大 / 縮小</span>
+                <button onclick="closePdfModal()" style="background-color: var(--primary-crimson); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 4px;">
+                    <i class="fa-solid fa-xmark"></i> 關閉返回
+                </button>
+            </div>
+        </div>
+        <div id="pdf-images-container" style="flex-grow: 1; overflow: auto; -webkit-overflow-scrolling: touch; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 16px; background-color: #222;">
+            <!-- Images will be dynamically appended here -->
+        </div>
+    </div>
+
     <!-- Javascript Logic -->
     <script>
         // Full Itinerary Data in JSON structure
@@ -739,7 +757,14 @@
                 hotelAddress: "〒531-0072 大阪府大阪市北区豊崎3-20-4",
                 hotelTel: "06-6376-1045",
                 hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Osaka+Umeda+Nakatsu+No.1",
-                hotelPdfUrl: "Reservations/osaka_toyoko_inn.pdf",
+                hotelImages: [
+                    "Reservations/osaka_toyoko_inn_頁面_1.png",
+                    "Reservations/osaka_toyoko_inn_頁面_2.png",
+                    "Reservations/osaka_toyoko_inn_頁面_3.png",
+                    "Reservations/osaka_toyoko_inn_頁面_4.png",
+                    "Reservations/osaka_toyoko_inn_頁面_5.png",
+                    "Reservations/osaka_toyoko_inn_頁面_6.png"
+                ],
                 summary: "抵達日本 ➔ 關西機場 T2 ➔ 特急 Rapi:t ➔ 難波 ➔ 地鐵中津 ➔ 飯店 Check-in ➔ 宵夜晚餐",
                 timeline: [
                     { time: "14:10", title: "搭乘樂桃航空 MM32", desc: "高雄小港機場 (KHH) 起飛" },
@@ -905,7 +930,11 @@
                 hotelAddress: "〒604-8221 京都府京都市中京区錦小路通室町西入天神山町284-1",
                 hotelTel: "075-211-3611",
                 hotelMapUrl: "https://maps.google.com/?q=Comfort+Inn+Kyoto+Shijo+Karasuma",
-                hotelPdfUrl: "Reservations/kyoto_comfort_inn.pdf",
+                hotelImages: [
+                    "Reservations/kyoto_comfort_inn_頁面_1.png",
+                    "Reservations/kyoto_comfort_inn_頁面_2.png",
+                    "Reservations/kyoto_comfort_inn_頁面_3.png"
+                ],
                 summary: "京都搬家寄放行李 ➔ 宇治世界遺產與抹茶一日遊 (平等院、宇治上神社、中村藤吉、豬一拉麵)",
                 timeline: [
                     { time: "08:30", title: "退房前往京都", desc: "從飯店退房後，前往阪急大阪梅田站，搭乘【阪急京都線】快速前往烏丸站 (車程約40-50分鐘，單程 ￥410)。" },
@@ -992,7 +1021,14 @@
                 hotelAddress: "〒651-0097 兵庫県神戸市中央区布引町4丁目3-8",
                 hotelTel: "078-272-2845",
                 hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Kobe+Sannomiya-eki+Mae",
-                hotelPdfUrl: "Reservations/kobe_toyoko_inn.pdf",
+                hotelImages: [
+                    "Reservations/kobe_toyoko_inn_頁面_1.png",
+                    "Reservations/kobe_toyoko_inn_頁面_2.png",
+                    "Reservations/kobe_toyoko_inn_頁面_3.png",
+                    "Reservations/kobe_toyoko_inn_頁面_4.png",
+                    "Reservations/kobe_toyoko_inn_頁面_5.png",
+                    "Reservations/kobe_toyoko_inn_頁面_6.png"
+                ],
                 summary: "京都 ➔ 神戶三宮 ➔ 生田神社 ➔ 北野異人館 ➔ 南京町中華街 ➔ 美利堅公園與神戶港塔夜景",
                 timeline: [
                     { time: "11:00", title: "搭乘 JR 新快速前往神戶", desc: "JR京都站 ➔ JR三宮站 (持周遊券免費，搭乘新快速直達約51分鐘)。" },
@@ -1185,7 +1221,10 @@
                 hotelAddress: "〒598-0048 大阪府泉佐野市りんくう往来北1-833",
                 hotelTel: "072-460-1090",
                 hotelMapUrl: "https://maps.google.com/?q=OMO+Kansai+Airport+by+Hoshino+Resorts",
-                hotelPdfUrl: "Reservations/kanku_omo_hotel.pdf",
+                hotelImages: [
+                    "Reservations/kanku_omo_hotel_頁面_1.png",
+                    "Reservations/kanku_omo_hotel_頁面_2.png"
+                ],
                 summary: "上午神戶動物王國 ➔ 下午前往臨空城 Outlet 瘋狂採購",
                 timeline: [
                     { time: "09:30", title: "上午景點推薦", desc: "推薦 1：神戶動物王國 (超人氣親子景點，可近距離撫摸水豚、餵食小動物)。\n推薦 2：北野異人館街補漏景點。" },
@@ -1536,14 +1575,13 @@
                 document.getElementById("day-hotel-address").innerText = data.hotelAddress || "";
                 document.getElementById("day-hotel-map").setAttribute("href", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(getSearchQuery(data.hotel)));
                 
-                // Show or hide Hotel Reservation PDF Confirmation Link
+                // Show or hide Hotel Reservation Image Confirmation Modal
                 const hotelPdf = document.getElementById("day-hotel-pdf");
-                if (data.hotelPdfUrl) {
-                    // Prepend raw.githubusercontent.com to force iOS PWA to open it in a Safari View Controller popup sheet
-                    // This popup sheet displays the PDF natively, supporting multi-page scroll, pinch-to-zoom, and a Close ('Done') button.
-                    const absoluteUrl = "https://raw.githubusercontent.com/chanceh-cloud/jptrip2026/main/" + data.hotelPdfUrl;
-                    hotelPdf.setAttribute("href", absoluteUrl);
-                    hotelPdf.onclick = null; // Clean up click event
+                if (data.hotelImages && data.hotelImages.length > 0) {
+                    hotelPdf.onclick = function(e) {
+                        e.preventDefault();
+                        openPdfImagesModal(data.hotelImages);
+                    };
                     hotelPdf.style.display = "flex";
                 } else {
                     hotelPdf.style.display = "none";
@@ -1552,6 +1590,60 @@
 
             // Refresh scroll height calculations
             refreshScroll();
+        }
+
+        // PDF/Image Viewer Modal helper functions
+        function openPdfImagesModal(images) {
+            const modal = document.getElementById("pdf-viewer-modal");
+            const container = document.getElementById("pdf-images-container");
+            
+            // Clear previous images
+            container.innerHTML = "";
+            
+            // Append new images
+            images.forEach((imgUrl, index) => {
+                const img = document.createElement("img");
+                img.src = imgUrl;
+                img.style.width = "100%";
+                img.style.maxWidth = "100%";
+                img.style.height = "auto";
+                img.style.borderRadius = "8px";
+                img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.5)";
+                img.style.cursor = "zoom-in";
+                img.style.transition = "width 0.25s ease, max-width 0.25s ease";
+                img.alt = "預約單第 " + (index + 1) + " 頁";
+                
+                // Toggle zoom on click/tap
+                img.onclick = function() {
+                    if (this.style.width === "200%") {
+                        this.style.width = "100%";
+                        this.style.maxWidth = "100%";
+                        this.style.cursor = "zoom-in";
+                    } else {
+                        this.style.width = "200%";
+                        this.style.maxWidth = "none";
+                        this.style.cursor = "zoom-out";
+                    }
+                };
+                
+                container.appendChild(img);
+            });
+            
+            modal.style.display = "flex";
+            
+            // Prevent main page scrolling while modal is open
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePdfModal() {
+            const modal = document.getElementById("pdf-viewer-modal");
+            const container = document.getElementById("pdf-images-container");
+            
+            modal.style.display = "none";
+            container.innerHTML = ""; // Clear images to release memory
+            
+            // Restore main page scrolling
+            document.body.style.overflow = "";
         }
 
         // Debounced scroll container reflow helper to fix iOS Safari scroll freeze bugs
