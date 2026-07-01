@@ -581,8 +581,11 @@
 
                 <!-- Hotel Card inside Itinerary Tab -->
                 <div class="card" id="day-hotel-card" style="display: none;">
-                    <div class="card-title" style="color: var(--primary-crimson);">
-                        <i class="fa-solid fa-hotel"></i> 今日住宿
+                    <div class="card-title" style="color: var(--primary-crimson); display: flex; justify-content: space-between; align-items: center;">
+                        <div><i class="fa-solid fa-hotel"></i> 今日住宿</div>
+                        <a id="day-hotel-pdf" href="#" target="_blank" style="display: none; font-size: 14px; color: #E63946; background-color: rgba(230, 57, 70, 0.1); padding: 4px 8px; border-radius: 6px; text-decoration: none; font-weight: 700; align-items: center; gap: 4px;">
+                            <i class="fa-solid fa-file-pdf"></i> 預約確認單
+                        </a>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="flex-grow: 1;">
@@ -733,6 +736,7 @@
                 hotelAddress: "〒531-0072 大阪府大阪市北区豊崎3-20-4",
                 hotelTel: "06-6376-1045",
                 hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Osaka+Umeda+Nakatsu+No.1",
+                hotelPdfUrl: "Reservations/osaka_toyoko_inn.pdf",
                 summary: "抵達日本 ➔ 關西機場 T2 ➔ 特急 Rapi:t ➔ 難波 ➔ 地鐵中津 ➔ 飯店 Check-in ➔ 宵夜晚餐",
                 timeline: [
                     { time: "14:10", title: "搭乘樂桃航空 MM32", desc: "高雄小港機場 (KHH) 起飛" },
@@ -898,6 +902,7 @@
                 hotelAddress: "〒604-8221 京都府京都市中京区錦小路通室町西入天神山町284-1",
                 hotelTel: "075-211-3611",
                 hotelMapUrl: "https://maps.google.com/?q=Comfort+Inn+Kyoto+Shijo+Karasuma",
+                hotelPdfUrl: "Reservations/kyoto_comfort_inn.pdf",
                 summary: "京都搬家寄放行李 ➔ 宇治世界遺產與抹茶一日遊 (平等院、宇治上神社、中村藤吉、豬一拉麵)",
                 timeline: [
                     { time: "08:30", title: "退房前往京都", desc: "從飯店退房後，前往阪急大阪梅田站，搭乘【阪急京都線】快速前往烏丸站 (車程約40-50分鐘，單程 ￥410)。" },
@@ -984,6 +989,7 @@
                 hotelAddress: "〒651-0097 兵庫県神戸市中央区布引町4丁目3-8",
                 hotelTel: "078-272-2845",
                 hotelMapUrl: "https://maps.google.com/?q=Toyoko+Inn+Kobe+Sannomiya-eki+Mae",
+                hotelPdfUrl: "Reservations/kobe_toyoko_inn.pdf",
                 summary: "京都 ➔ 神戶三宮 ➔ 生田神社 ➔ 北野異人館 ➔ 南京町中華街 ➔ 美利堅公園與神戶港塔夜景",
                 timeline: [
                     { time: "11:00", title: "搭乘 JR 新快速前往神戶", desc: "JR京都站 ➔ JR三宮站 (持周遊券免費，搭乘新快速直達約51分鐘)。" },
@@ -1176,6 +1182,7 @@
                 hotelAddress: "〒598-0048 大阪府泉佐野市りんくう往来北1-833",
                 hotelTel: "072-460-1090",
                 hotelMapUrl: "https://maps.google.com/?q=OMO+Kansai+Airport+by+Hoshino+Resorts",
+                hotelPdfUrl: "Reservations/kanku_omo_hotel.pdf",
                 summary: "上午神戶動物王國 ➔ 下午前往臨空城 Outlet 瘋狂採購",
                 timeline: [
                     { time: "09:30", title: "上午景點推薦", desc: "推薦 1：神戶動物王國 (超人氣親子景點，可近距離撫摸水豚、餵食小動物)。\n推薦 2：北野異人館街補漏景點。" },
@@ -1525,6 +1532,15 @@
                 document.getElementById("day-hotel-name").innerText = data.hotel;
                 document.getElementById("day-hotel-address").innerText = data.hotelAddress || "";
                 document.getElementById("day-hotel-map").setAttribute("href", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(getSearchQuery(data.hotel)));
+                
+                // Show or hide Hotel Reservation PDF Confirmation Link
+                const hotelPdf = document.getElementById("day-hotel-pdf");
+                if (data.hotelPdfUrl) {
+                    hotelPdf.setAttribute("href", data.hotelPdfUrl);
+                    hotelPdf.style.display = "flex";
+                } else {
+                    hotelPdf.style.display = "none";
+                }
             }
 
             // Refresh scroll height calculations
