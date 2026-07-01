@@ -533,7 +533,7 @@
                     <button onclick="window.location.reload(true)" style="background: none; border: none; color: var(--accent-gold); font-size: 18px; padding: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="同步更新 / 重新整理">
                         <i class="fa-solid fa-rotate"></i>
                     </button>
-                    <span style="font-size: 10px; color: var(--accent-gold); opacity: 0.85; font-weight: 700; margin-top: -2px; letter-spacing: 0.5px;">ver 1.01</span>
+                    <span style="font-size: 10px; color: var(--accent-gold); opacity: 0.85; font-weight: 700; margin-top: -2px; letter-spacing: 0.5px;">ver 1.02</span>
                 </div>
             </div>
 
@@ -1610,21 +1610,13 @@
                 img.style.borderRadius = "8px";
                 img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.5)";
                 img.style.cursor = "zoom-in";
-                img.style.transition = "width 0.25s ease, max-width 0.25s ease";
+                img.style.userSelect = "none";
+                img.style.webkitUserSelect = "none";
+                img.style.webkitUserDrag = "none";
                 img.alt = "預約單第 " + (index + 1) + " 頁";
                 
-                // Toggle zoom on click/tap
-                img.onclick = function() {
-                    if (this.style.width === "200%") {
-                        this.style.width = "100%";
-                        this.style.maxWidth = "100%";
-                        this.style.cursor = "zoom-in";
-                    } else {
-                        this.style.width = "200%";
-                        this.style.maxWidth = "none";
-                        this.style.cursor = "zoom-out";
-                    }
-                };
+                // Enable multi-touch pinch to zoom and drag panning
+                enablePinchZoom(img);
                 
                 container.appendChild(img);
             });
@@ -1644,6 +1636,103 @@
             
             // Restore main page scrolling
             document.body.style.overflow = "";
+        }
+
+        // Native Multi-touch Pinch to Zoom & Drag-to-pan helper for images inside iOS PWA
+        function enablePinchZoom(img) {
+            let scale = 1;
+            let startScale = 1;
+            let distanceStart = 0;
+            
+            let translateX = 0;
+            let translateY = 0;
+            let startX = 0;
+            let startY = 0;
+            
+            let isPinched = false;
+            let isDragging = false;
+            
+            img.style.transformOrigin = "center center";
+            img.style.transition = "transform 0.15s ease-out";
+            
+            img.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    if (scale > 1.05) {
+                        isDragging = true;
+                        startX = e.touches[0].clientX - translateX;
+                        startY = e.touches[0].clientY - translateY;
+                        img.style.transition = "none"; // real-time tracking
+                    }
+                } else if (e.touches.length === 2) {
+                    isPinched = true;
+                    isDragging = false;
+                    distanceStart = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    startScale = scale;
+                    img.style.transition = "none";
+                }
+            }, { passive: true });
+
+            img.addEventListener('touchmove', function(e) {
+                if (isDragging && e.touches.length === 1) {
+                    if (e.cancelable) e.preventDefault(); // lock outer scroll
+                    translateX = e.touches[0].clientX - startX;
+                    translateY = e.touches[0].clientY - startY;
+                    updateTransform();
+                } else if (isPinched && e.touches.length === 2) {
+                    if (e.cancelable) e.preventDefault();
+                    let distanceCurrent = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    scale = Math.min(Math.max(startScale * (distanceCurrent / distanceStart), 1), 4);
+                    updateTransform();
+                }
+            }, { passive: false });
+
+            img.addEventListener('touchend', function(e) {
+                img.style.transition = "transform 0.25s ease-out";
+                if (e.touches.length === 0) {
+                    isDragging = false;
+                    isPinched = false;
+                    
+                    // Snap back if scale is close to 1
+                    if (scale <= 1.1) {
+                        scale = 1;
+                        translateX = 0;
+                        translateY = 0;
+                        updateTransform();
+                    }
+                } else if (e.touches.length === 1) {
+                    if (scale > 1.05) {
+                        isPinched = false;
+                        isDragging = true;
+                        startX = e.touches[0].clientX - translateX;
+                        startY = e.touches[0].clientY - translateY;
+                    }
+                }
+            });
+
+            // Double tap / Single click to toggle zoom as fallback
+            img.addEventListener('click', function(e) {
+                img.style.transition = "transform 0.25s ease-in-out";
+                if (scale > 1.05) {
+                    scale = 1;
+                    translateX = 0;
+                    translateY = 0;
+                } else {
+                    scale = 2;
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+            });
+
+            function updateTransform() {
+                img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            }
         }
 
         // Debounced scroll container reflow helper to fix iOS Safari scroll freeze bugs
